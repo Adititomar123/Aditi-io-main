@@ -1,45 +1,96 @@
 {% extends "base.njk" %}
 {% from 'components/button/button.njk' import button %}
-
+{% from 'components/skillcomponent/skillcomponent.njk' import skillcomponent %}
+{% from 'components/section/sectioncomponent.njk' import sectioncomponent %}
 {% block page_styles %}
   <link rel="stylesheet" href="css/home.css">
 {% endblock %}
+{% block header %}
+  <button id="theme-toggle" class="theme-toggle" aria-label="toggle dark mode">
+    <svg role="img">
+      <use xlink:href="svg/sprite.svg#icon-theme"></use>
+    </svg>
+  </button>
+  <article>
+    <div class="profile">
+      <div class="profile__picture">
+        <img src="images/profile-picture.webp" width="205px" height="205px " alt="Profile picture"/>
+      </div>
+      <div class="profile__text">
+        {% for article in home.article %}
+          <h1 class="profile__text__title">{{article.name}}</h1>
+          <p class="profile__text__area">{{article.area}}</p>
+          <p class="profile__text__description">{{article.description}}</p>
+        {% endfor %}
+
+        <a class="profile__link" id="download_CV" href="pdf/Resume_Aditi_Tomar.pdf" download>{{global.app_title}}</a>
+        {# <button class="profile__btns__btn" type="button" aria-label="See Projects">Projects</button> #}
+
+      </div>
+    </div>
+  </article>
+{% endblock header %}
 
 {% block main %}
-<div class="app-home app-inner">
-  <h1>Hello world</h1>
-  <ul>
-    <li>
-      <h2>test svg</h2>
-      <svg><use xlink:href="svg/sprite.svg#icon-cancel"></use></svg>
-    </li>
-    <li>
-      <h2>test markdown</h2>
-      {{'# test' | markdown | safe}}
-    </li>
-    <li>
-      <h2>test nunjucks template data</h2>
-      {{home.random}}
-    </li>
-    <li>
-      <h2>test nunjucks component</h2>
-      {{ button({
-        'label': 'Hello button',
-        'type': 'medium-emphasis',
-        'id': 'hello-btn',
-        'classes': 'app-home__button'
-      }) }}
-    </li>
-    <li>
-      <h2>image</h2>
-      <img src="images/apes.gif" />
-      <div class="app-home__test"></div>
-    </li>
+  {% call sectioncomponent('Professional Skillset', 'skills') %}
+  <ul class="skills__listgroup">
+    {% for skill in home.skilllist %}
+      {{skillcomponent(skill)}}
+    {% endfor %}
   </ul>
-</div>
+  {% endcall %}
+
+  {% call sectioncomponent('Experience', 'experience') %}
+  <ol class="experience__listgroup">
+    {% for item in home.experience %}
+      <li class="experience__listgroup__item">
+        <div class="experience__listgroup__item__left">
+          <h3 class="experience__listgroup__item__left__tenure">{{ item.tenure}}</h3>
+          <p  class="experience__listgroup__item__left__designation" >{{item.designation}}</p>
+          <p class="experience__listgroup__item__left__company">{{item.companyname}}</p>
+        </div>
+        <div class="experience__listgroup__item__right">
+          <ol class="experience__listgroup__item__right__listgroup specialclass">
+            {% for i in item.explist %}
+              <li class="experience__listgroup__item__right__listgroup__item">{{i}}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+  {% endcall %}
+
+  {% call sectioncomponent('Education', 'education') %}
+  <ul class="education__listgroup">
+    {% for item in home.education %}
+      <li class="education__listgroup__item">
+        <h3 class="education__listgroup__item__qualification">{{item.qualification}}</h3>
+        <p class="education__listgroup__item__university">{{item.university}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endcall %}
 {% endblock %}
+{% block footer %}
+  <footer class="footer">
+    <div class="footer__social">
 
+      <a href="https://github.com/Adititomar123" target="_blank" aria-label="check out my github account">
+        <svg role="img" aria-label="Github">
+          <use xlink:href="svg/sprite.svg#icon-github"></use>
+        </svg>
+      </a>
+      <a href="mailto:adititomar2k8@gmail.com" target="_blank" aria-label="check out my gmail account">
+        <svg role="img" aria-label="Gmail">
+          <use xlink:href="svg/sprite.svg#icon-gmail"></use>
+        </svg>
+      </a>
+    </div>
+  </footer>
 
+{% endblock footer %}
 {% block page_scripts %}
-<script src="js/home.js"></script>
+
+  <script src="js/home.js"></script>
 {% endblock %}

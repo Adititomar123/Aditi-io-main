@@ -1,0 +1,28 @@
+{% macro skillcomponent(data) %}
+  <ul class="skill-List">
+    {% for skill in data.skilllist %}
+      <li>{{skill}}</li>
+    {% endfor %}
+  </ul>  
+{% endmacro %}
+
+{# {% macro expcomponent(data) %}
+  <ul class="experienceList">
+    {% for item in data.experience %}
+      <li class="card">
+        <div class="left-part">
+          <h3>{{ item.tenure}}</h3>
+          <p role="designation">{{item.designation}}</p>
+          <p role="company-name">{{item.companyname}}</p>
+        </div>
+        <div class="right-part">
+          <ol>
+            {% for i in item.explist %}
+              <li >{{i}}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </li>
+    {% endfor %}
+  </ul> 
+{% endmacro %} #}
