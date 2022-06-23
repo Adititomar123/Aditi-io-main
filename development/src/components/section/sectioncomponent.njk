@@ -1,0 +1,8 @@
+{% macro sectioncomponent(heading, class) %}
+  <section class="{{class}}">
+    <h2>{{heading}}</h2>
+     {{caller()}}
+  </section>
+{% endmacro %} 
+
+
