@@ -1,74 +1,73 @@
 {% extends "base.njk" %}
 {% from 'components/button/button.njk' import button %}
-{% from 'components/skillcomponent/skillcomponent.njk' import skillcomponent %} 
-{% from 'components/section/sectioncomponent.njk' import sectioncomponent %} 
+{% from 'components/skillcomponent/skillcomponent.njk' import skillcomponent %}
+{% from 'components/section/sectioncomponent.njk' import sectioncomponent %}
 {% block page_styles %}
   <link rel="stylesheet" href="css/home.css">
 {% endblock %}
 
 {% block header %}
-<article>
-  <div class="profile">
-    <div class="profile__picture">
-      <img src="images/profile-picture.png" alt="Profile picture"/>
+  <article>
+    <div class="profile">
+      <div class="profile__picture">
+        <img src="images/profile-picture.png" alt="Profile picture"/>
+      </div>
+      <div class="profile__text">
+        {% for article in home.article %}
+          <h1 class="profile__text__title">{{article.name}}</h1>
+          <p class="profile__text__area">{{article.area}}</p>
+          <p class="profile__text__description">{{article.description}}</p>
+        {% endfor %}
+        <a class="profile__link" href="#" download>{{global.app_title}}</a>
+        {# <button class="profile__btns__btn" type="button" aria-label="See Projects">Projects</button> #}
+
+      </div>
     </div>
-    <div class="profile__text">
-      {% for article in home.article %}
-        <h1 class="profile__text__title">{{article.name}}</h1>
-        <p class="profile__text__description">{{article.description}}</p>
-      {% endfor %}
-      <div class="profile__btns">
-        <button class="profile__btns__resumebtn" type="button" aria-label="Download CV">Download CV</button>
-        <button type="button" aria-label="See Projects">Projects</button>
-       </div>
-    </div>
-  </div>
-</article>
+  </article>
 {% endblock header %}
 
 {% block main %}
-{% call sectioncomponent('Professional Skillset', 'skills') %}
-     <ul class="skills__listgroup">
-      {% for skill in home.skilllist %}
-        {{skillcomponent(skill)}}
-      {% endfor %}
-  </ul>  
-{% endcall %} 
+  {% call sectioncomponent('Professional Skillset', 'skills') %}
+  <ul class="skills__listgroup">
+    {% for skill in home.skilllist %}
+      {{skillcomponent(skill)}}
+    {% endfor %}
+  </ul>
+  {% endcall %}
 
-{% call sectioncomponent('Experience', 'experience') %}
-      <ul class="experience__listgroup">
-      {% for item in home.experience %}
-        <li class="experience__listgroup__item">
-          <div class="experience__listgroup__item__left">
-            <h3 class="experience__listgroup__item__left__tenure">{{ item.tenure}}</h3>
-            <p  class="experience__listgroup__item__left__designation" >{{item.designation}}</p>
-            <p class="experience__listgroup__item__left__company">{{item.companyname}}</p>
-          </div>
-          <div class="experience__listgroup__item__right">
-            <ol class="experience__listgroup__item__right__listgroup">
-              {% for i in item.explist %}
-                <li class="experience__listgroup__item__right__listgroup__item">{{i}}</li>
-              {% endfor %}
-            </ol>
-          </div>
+  {% call sectioncomponent('Experience', 'experience') %}
+  <ol class="experience__listgroup">
+    {% for item in home.experience %}
+      <li class="experience__listgroup__item">
+        <div class="experience__listgroup__item__left">
+          <h3 class="experience__listgroup__item__left__tenure">{{ item.tenure}}</h3>
+          <p  class="experience__listgroup__item__left__designation" >{{item.designation}}</p>
+          <p class="experience__listgroup__item__left__company">{{item.companyname}}</p>
+        </div>
+        <div class="experience__listgroup__item__right">
+          <ol class="experience__listgroup__item__right__listgroup">
+            {% for i in item.explist %}
+              <li class="experience__listgroup__item__right__listgroup__item">{{i}}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+  {% endcall %}
+
+  {% call sectioncomponent('Education', 'education') %}
+  <ul class="education__listgroup">
+    {% for item in home.education %}
+      <li class="education__listgroup__item">
+        <h3 class="education__listgroup__item__qualification">{{item.qualification}}</h3>
+        <p class="education__listgroup__item__university">{{item.university}}
         </li>
       {% endfor %}
     </ul>
-  </ul>  
-{% endcall %} 
+    {% endcall %}
+  {% endblock %}
 
-{% call sectioncomponent('Education', 'education') %}
-     <ul class="education__listgroup">
-        {% for item in home.education %}
-          <li class="education__listgroup__item">
-            <h3 class="education__listgroup__item__qualification">{{item.qualification}}</h3>
-            <p class="education__listgroup__item__university">{{item.university}}
-          </li>
-        {% endfor %}
-       </ul>
-{% endcall %} 
-{% endblock %}
-
-{% block page_scripts %}
-<script src="js/home.js"></script>
-{% endblock %}
+  {% block page_scripts %}
+    <script src="js/home.js"></script>
+  {% endblock %}
