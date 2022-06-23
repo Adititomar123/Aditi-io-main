@@ -1,7 +1,8 @@
-{% from 'components/subcomponents/subcomponents.njk' import skillcomponent %} 
-{% macro sectioncomponent(heading, class, data) %}
-  <section class="{{class}} {{background}}">
+{% macro sectioncomponent(heading, class) %}
+  <section class="{{class}}">
     <h2>{{heading}}</h2>
-    {{ skillcomponent(data)}}
+     {{caller()}}
   </section>
-{% endmacro %}
+{% endmacro %} 
+
+

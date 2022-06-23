@@ -2,9 +2,8 @@
 {% from 'components/button/button.njk' import button %}
 {% from 'components/skillcomponent/skillcomponent.njk' import skillcomponent %}
 {% from 'components/section/sectioncomponent.njk' import sectioncomponent %}
-{% block page_styles %}
-  <link rel="stylesheet" href="css/home.css">
-{% endblock %}
+{% block page_styles %}{% endblock %}
+
 {% block header %}
   <button id="theme-toggle" class="theme-toggle" aria-label="toggle dark mode">
     <svg role="img">
@@ -91,6 +90,5 @@
 
 {% endblock footer %}
 {% block page_scripts %}
-
   <script src="js/home.js"></script>
 {% endblock %}
