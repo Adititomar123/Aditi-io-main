@@ -29,13 +29,13 @@
 
       </div>
     </div>
-    <div class="profile-text">
+    <div class="profile__text">
       {% for article in home.article %}
-        <h1>{{article.name}}</h1>
-        <p>{{article.description}}</p>
+        <h1 class="profile__text__title">{{article.name}}</h1>
+        <p class="profile__text__description">{{article.description}}</p>
       {% endfor %}
-      <div class="profile-btns">
-        <button class="resumebtn" type="button" aria-label="Download CV">Download CV</button>
+      <div class="profile__btns">
+        <button class="profile__btns__resumebtn" type="button" aria-label="Download CV">Download CV</button>
         <button type="button" aria-label="See Projects">Projects</button>
       </div>
     </div>
