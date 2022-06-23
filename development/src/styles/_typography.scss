@@ -2,12 +2,12 @@ $fallback-fonts: Arial, Helvetica, sans-serif;
 
 $fonts: (
   'en': (
-    'body'  : ('Roboto', #{$fallback-fonts}),
-    'header': ('Roboto', #{$fallback-fonts}),
+    'body'  : ('Google Sans', #{$fallback-fonts}),
+    'header': ('Google Sans', #{$fallback-fonts}),
   ),
 );
 
-$font-size-base: 13;
+$font-size-base: 18;
 
 $font-weights: (
   'light' : 300,

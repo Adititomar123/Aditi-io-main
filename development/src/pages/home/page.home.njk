@@ -1,73 +1,43 @@
 {% extends "base.njk" %}
 {% from 'components/button/button.njk' import button %}
-{% from 'components/skillcomponent/skillcomponent.njk' import skillcomponent %} 
-{% from 'components/section/sectioncomponent.njk' import sectioncomponent %} 
+
 {% block page_styles %}
   <link rel="stylesheet" href="css/home.css">
 {% endblock %}
 
-{% block header %}
-<article>
-  <div class="profile-section">
-    <div class="profile-photo">
-      <img src="images/profile-picture.png" />
-    </div>
-    <div class="profile-text">
-      {% for article in home.article %}
-        <h1>{{article.name}}</h1>
-        <p>{{article.description}}</p>
-      {% endfor %}
-      <div class="profile-btns">
-        <button class="resumebtn" type="button" aria-label="Download CV">Download CV</button>
-        <button type="button" aria-label="See Projects">Projects</button>
-       </div>
-    </div>
-  </div>
-</article>
-{% endblock header %}
-
 {% block main %}
-{% call sectioncomponent('Professional Skillset', 'skillset') %}
-     <ul class="skill-List">
-      {% for skill in home.skilllist %}
-        {{skillcomponent(skill)}}
-      {% endfor %}
-  </ul>  
-{% endcall %} 
-
-{% call sectioncomponent('Experience') %}
-      <ul class="experienceList">
-      {% for item in home.experience %}
-        <li class="card">
-          <div class="left-part">
-            <h3>{{ item.tenure}}</h3>
-            <p role="designation">{{item.designation}}</p>
-            <p role="company-name">{{item.companyname}}</p>
-          </div>
-          <div class="right-part">
-            <ol>
-              {% for i in item.explist %}
-                <li >{{i}}</li>
-              {% endfor %}
-            </ol>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-  </ul>  
-{% endcall %} 
-
-{% call sectioncomponent('Education') %}
-     <ul class="eduList">
-        {% for item in home.education %}
-          <li >
-            <h3>{{item.qualification}}</h3>
-            <p>{{item.university}}
-          </li>
-        {% endfor %}
-       </ul>
-{% endcall %} 
+<div class="app-home app-inner">
+  <h1>Hello world</h1>
+  <ul>
+    <li>
+      <h2>test svg</h2>
+      <svg><use xlink:href="#icon-cancel"></use></svg>
+    </li>
+    <li>
+      <h2>test markdown</h2>
+      {{'# test' | markdown | safe}}
+    </li>
+    <li>
+      <h2>test nunjucks template data</h2>
+      {{home.random}}
+    </li>
+    <li>
+      <h2>test nunjucks component</h2>
+      {{ button({
+        'label': 'Hello button',
+        'type': 'high-emphasis',
+        'id': 'hello-btn',
+        'classes': 'app-home__button'
+      }) }}
+    </li>
+    <li>
+      <h2>image</h2>
+      <img src="images/apes.gif" />
+    </li>
+  </ul>
+</div>
 {% endblock %}
+
 
 {% block page_scripts %}
 <script src="js/home.js"></script>

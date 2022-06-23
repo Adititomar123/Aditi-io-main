@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
     <title>{{content.title}}</title>
     <meta name="referrer" content="no-referrer" />
     {% block meta_tag %}
@@ -13,9 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://storage.googleapis.com/operating-anagram-8280/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://storage.googleapis.com/operating-anagram-8280/favicon-16x16.png">
     <link rel="shortcut icon" href="https://storage.googleapis.com/operating-anagram-8280/favicon.ico">
-    {# <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Google+Sans+Text:400,500,700,400i,500i,700i|Google+Sans:400,500|Product+Sans:400&amp;lang=en"> #}
-    <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Inter:wght@100&family=Roboto:wght@300&display=swap">
-     
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Google+Sans+Text:400,500,700,400i,500i,700i|Google+Sans:400,500|Product+Sans:400&amp;lang=en">
     {% block third_party_styles %}{% endblock third_party_styles %}
 
     {% block base_styles %}
@@ -26,7 +23,6 @@
   </head>
 
   <body class="app-body">
-     <div class="container">
     {# Header #}
     {% block header %}
 
@@ -55,5 +51,4 @@
     {% endblock base_script %}
     {% block page_scripts %}{% endblock page_scripts %}
   </body>
-  </div>
 </html>
