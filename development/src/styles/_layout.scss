@@ -1,7 +1,9 @@
 @import './variables';
 @import './utils';
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -9,20 +11,20 @@
   margin: 0;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
   color: hsl(0deg 0% 20%);
 }
 
 html {
-  &[lang="ko"] {
+  &[lang='ko'] {
     word-break: keep-all;
   }
 }
 
-body{
+body {
   background-color: #15717d;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 13px;
 }
 
