@@ -1,33 +1,42 @@
 {% extends "base.njk" %}
 {% from 'components/button/button.njk' import button %}
+{% from 'components/skillcomponent/skillcomponent.njk' import skillcomponent %} 
 {% from 'components/section/sectioncomponent.njk' import sectioncomponent %} 
 {% block page_styles %}
   <link rel="stylesheet" href="css/home.css">
 {% endblock %}
+
 {% block header %}
-  <article>
-    <div class="profile-section">
-      <div class="profile-photo">
-        <img src="images/profile-picture.png" />
-      </div>
-      <div class="profile-text">
-        {% for article in home.article %}
-          <h1>{{article.name}}</h1>
-          <p>{{article.description}}</p>
-        {% endfor %}
-        <div class="profile-btns">
-          <button class="resumebtn" type="button" aria-label="Download CV">Download CV</button>
-          <button type="button" aria-label="See Projects">Projects</button>
-         </div>
-      </div>
+<article>
+  <div class="profile-section">
+    <div class="profile-photo">
+      <img src="images/profile-picture.png" />
     </div>
-  </article>
+    <div class="profile-text">
+      {% for article in home.article %}
+        <h1>{{article.name}}</h1>
+        <p>{{article.description}}</p>
+      {% endfor %}
+      <div class="profile-btns">
+        <button class="resumebtn" type="button" aria-label="Download CV">Download CV</button>
+        <button type="button" aria-label="See Projects">Projects</button>
+       </div>
+    </div>
+  </div>
+</article>
 {% endblock header %}
+
 {% block main %}
-  {{sectioncomponent('Professional Skillset', 'skillset', home)}} 
-  <section>
-    <h2>Experience</h2>
-    <ul class="experienceList">
+{% call sectioncomponent('Professional Skillset', 'skillset') %}
+     <ul class="skill-List">
+      {% for skill in home.skilllist %}
+        {{skillcomponent(skill)}}
+      {% endfor %}
+  </ul>  
+{% endcall %} 
+
+{% call sectioncomponent('Experience') %}
+      <ul class="experienceList">
       {% for item in home.experience %}
         <li class="card">
           <div class="left-part">
@@ -45,10 +54,11 @@
         </li>
       {% endfor %}
     </ul>
-  </section>
-  <section>
-    <h2>Education</h2>
-      <ul class="eduList">
+  </ul>  
+{% endcall %} 
+
+{% call sectioncomponent('Education') %}
+     <ul class="eduList">
         {% for item in home.education %}
           <li >
             <h3>{{item.qualification}}</h3>
@@ -56,8 +66,9 @@
           </li>
         {% endfor %}
        </ul>
-  </section>
+{% endcall %} 
 {% endblock %}
+
 {% block page_scripts %}
 <script src="js/home.js"></script>
 {% endblock %}
