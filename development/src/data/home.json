@@ -4,15 +4,24 @@
     {
       "name": "Aditi Tomar",
       "area": "Front-end Developer",
+<<<<<<< HEAD
       "description": "I am a front-end developer with 5 years of experience in blending the art of design with skill of programming to deliver an immersive and engaging user experience through efficient website development, proactive feature optimization, and relentless debugging. Skilled in designing, developing and testing multiple web-based applications incorporating a range of technologies."
+=======
+      "description": "Creative Front-End Developer offering 5+ years of experience providing high-impact web solutions for diverse industry organizations. Skilled in designing, developing and testing multiple web-based applications incorporating a range of technologies. Aspiring to combine broad background with strong technical skills to excel as a Front-End Developer."
+>>>>>>> c9ab4d2 (Feedback: incorporate all the feedback)
     }
   ],
   "skilllist": [
     "HTML5",
     "CSS",
+<<<<<<< HEAD
     "Javascript",
     "Web Accessibility",
     "Web Performance",
+=======
+    "Responsive Design",
+    "Javascript",
+>>>>>>> c9ab4d2 (Feedback: incorporate all the feedback)
     "Bootstrap",
     "Adobe XD",
     "Photoshop",
@@ -30,11 +39,15 @@
         "Work closely with programmers and clients to meet project requirements, goals, and desired functionality",
         "Developed e-toolkits for clients to showcase their training materials in a more interactive way including animations and quizzes.",
         "Enhanced user experience and accomplish webpage objectives by creating site structure, navigation, page optimization, and graphics integration.",
+<<<<<<< HEAD
         "Enable site-wide promotions by programming HTML5 SVG to animate particles on web backgrounds.",
         " Updated email newsletters with CSS responsive design which increased overall user engagement.",
         " Managed front-end development of client sites. Used HTML5, CSS3, and Javascript to develop UX using sharepoint.",
         " Implemented enhancements that improved web functionality and responsiveness.",
         " Used Photoshop and XD to create artwork and prototypes."
+=======
+        "Enable site-wide promotions by programming HTML5 SVG to animate particles on web backgrounds."
+>>>>>>> c9ab4d2 (Feedback: incorporate all the feedback)
       ]
     },
     {
@@ -42,10 +55,16 @@
       "designation": "UI Developer",
       "companyname": "Cadence Design Systems",
       "explist": [
+<<<<<<< HEAD
         "Developed the UI with interactive functionalities like user registrations, collecting the information of user, quizzes, and feedback emails.",
         "CPG is a E-Learning website to discover guidelines for EDAs and ICs documentation. It offers the ability to share material in all kinds of formats such as videos, slideshows, word documents, and PDFs. Additionally, it provides quizzes to the users to test and improve their skills.",
         "Discussed, analyzed and strategized product design with Product Managers, Customers and Business Managers.",
         "Used HTML5, CSS3, JavaScript, ajax and JSON for development."
+=======
+        "CPG is a E-Learning website to discover guidelines for EDAs and ICs documentation. It offers the ability to share material in all kinds of formats such as videos, slideshows, word documents, and PDFs. Additionally, it provides quizzes to the users to test and improve their skills.",
+        "Discussed, analyzed and strategized product design with Product Managers, Customers and Business Managers.",
+        "Developed the UX with interactive functionalities like user registrations, collecting the information of user, quizzes, and feedback emails."
+>>>>>>> c9ab4d2 (Feedback: incorporate all the feedback)
       ]
     },
     {
@@ -53,8 +72,13 @@
       "designation": "UI/UX Designer",
       "companyname": "Aardee Solutions Pvt. Ltd.",
       "explist": [
+<<<<<<< HEAD
         "Worked on 50+ templates and migrations using HTML, CSS and jQuery, Javascript.",
         "Responsible for PSD to HTML conversion.",
+=======
+        "Responsible for PSD to HTML conversion.",
+        "Worked on 50+ templates and migrations using HTML, CSS and jQuery, Javascript.",
+>>>>>>> c9ab4d2 (Feedback: incorporate all the feedback)
         "Responsible for reviewing the code and rectification"
       ]
     }

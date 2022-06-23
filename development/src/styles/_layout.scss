@@ -1,6 +1,5 @@
 @import './variables';
 @import './utils';
-
 *,
 *::before,
 *::after {
@@ -14,22 +13,9 @@
 html,
 body {
   color: var(--color-primary-2);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-}
-
-html,
-body {
-  height: 100%;
-  color: hsl(0deg 0% 20%);
+  @media print {
+    color: #131313;
+  }
 }
 
 html {
@@ -42,7 +28,6 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 13px;
 }
-
 .svg-sprite {
   @include visually-hidden;
 }

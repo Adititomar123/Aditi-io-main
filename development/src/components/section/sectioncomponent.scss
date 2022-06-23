@@ -2,22 +2,32 @@
   padding: 20px 49px;
   margin-left: -49px;
   margin-right: -49px;
+<<<<<<< HEAD
   background-color: var(--color-skillbg);
+=======
+  background-color: color('grey');
+>>>>>>> c9ab4d2 (Feedback: incorporate all the feedback)
   &__listgroup {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px 30px;
+<<<<<<< HEAD
     @media print {
       display: flex;
       flex-wrap: wrap;
       gap: 5px;
     }
+=======
+>>>>>>> c9ab4d2 (Feedback: incorporate all the feedback)
     &__item {
       @include skillList;
     }
   }
+<<<<<<< HEAD
   @media print {
     padding: 0;
     margin: 0;
   }
+=======
+>>>>>>> c9ab4d2 (Feedback: incorporate all the feedback)
 }
