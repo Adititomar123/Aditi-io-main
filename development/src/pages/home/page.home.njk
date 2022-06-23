@@ -8,17 +8,17 @@
 
 {% block header %}
 <article>
-  <div class="profile-section">
-    <div class="profile-photo">
-      <img src="images/profile-picture.png" />
+  <div class="profile">
+    <div class="profile__picture">
+      <img src="images/profile-picture.png" alt="Profile picture"/>
     </div>
-    <div class="profile-text">
+    <div class="profile__text">
       {% for article in home.article %}
-        <h1>{{article.name}}</h1>
-        <p>{{article.description}}</p>
+        <h1 class="profile__text__title">{{article.name}}</h1>
+        <p class="profile__text__description">{{article.description}}</p>
       {% endfor %}
-      <div class="profile-btns">
-        <button class="resumebtn" type="button" aria-label="Download CV">Download CV</button>
+      <div class="profile__btns">
+        <button class="profile__btns__resumebtn" type="button" aria-label="Download CV">Download CV</button>
         <button type="button" aria-label="See Projects">Projects</button>
        </div>
     </div>
@@ -27,27 +27,27 @@
 {% endblock header %}
 
 {% block main %}
-{% call sectioncomponent('Professional Skillset', 'skillset') %}
-     <ul class="skill-List">
+{% call sectioncomponent('Professional Skillset', 'skills') %}
+     <ul class="skills__listgroup">
       {% for skill in home.skilllist %}
         {{skillcomponent(skill)}}
       {% endfor %}
   </ul>  
 {% endcall %} 
 
-{% call sectioncomponent('Experience') %}
-      <ul class="experienceList">
+{% call sectioncomponent('Experience', 'experience') %}
+      <ul class="experience__listgroup">
       {% for item in home.experience %}
-        <li class="card">
-          <div class="left-part">
-            <h3>{{ item.tenure}}</h3>
-            <p role="designation">{{item.designation}}</p>
-            <p role="company-name">{{item.companyname}}</p>
+        <li class="experience__listgroup__item">
+          <div class="experience__listgroup__item__left">
+            <h3 class="experience__listgroup__item__left__tenure">{{ item.tenure}}</h3>
+            <p  class="experience__listgroup__item__left__designation" >{{item.designation}}</p>
+            <p class="experience__listgroup__item__left__company">{{item.companyname}}</p>
           </div>
-          <div class="right-part">
-            <ol>
+          <div class="experience__listgroup__item__right">
+            <ol class="experience__listgroup__item__right__listgroup">
               {% for i in item.explist %}
-                <li >{{i}}</li>
+                <li class="experience__listgroup__item__right__listgroup__item">{{i}}</li>
               {% endfor %}
             </ol>
           </div>
@@ -57,12 +57,12 @@
   </ul>  
 {% endcall %} 
 
-{% call sectioncomponent('Education') %}
-     <ul class="eduList">
+{% call sectioncomponent('Education', 'education') %}
+     <ul class="education__listgroup">
         {% for item in home.education %}
-          <li >
-            <h3>{{item.qualification}}</h3>
-            <p>{{item.university}}
+          <li class="education__listgroup__item">
+            <h3 class="education__listgroup__item__qualification">{{item.qualification}}</h3>
+            <p class="education__listgroup__item__university">{{item.university}}
           </li>
         {% endfor %}
        </ul>
