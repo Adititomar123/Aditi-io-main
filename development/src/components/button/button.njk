@@ -20,7 +20,7 @@
 {% macro button(options={}) -%}
 
   {% if options.href %}
-  <a
+    <a
     class="{{ class_names.base }} {{ class_names.base }}--{{ options.type }}"
     href="{{ options.href }}"
     {% if options.blank %}
@@ -32,19 +32,19 @@
       id="{{ options.id }}"
     {% endif %}
     >
-    <span>{{ options.label }}</span>
-    {{ _icon(options.icon, options.label) }}
-  </a>
+      <span>{{ options.label }}</span>
+      {{ _icon(options.icon, options.label) }}
+    </a>
   {% else %}
-  <button
+    <button
     class="{{ class_names.base }} {{ class_names.base }}--{{ options.type }}"
     {% if options.id %}
       id="{{ options.id }}"
     {% endif %}
     >
-    <span>{{ options.label }}</span>
-    {{ _icon(options.icon, options.label) }}
-  </button>
+      <span>{{ options.label }}</span>
+      {{ _icon(options.icon, options.label) }}
+    </button>
   {% endif %}
 
 {%- endmacro -%}
@@ -52,7 +52,7 @@
 {% macro _icon(source, label) -%}
   {% if source %}
     <svg role="img" alt="{{ label }}" class="{{ class_names.icon }}">
-      <use xlink:href="{{ source }}" />
+      <use xlink:href="{{ source }}"/>
     </svg>
   {% endif %}
 {%- endmacro -%}
