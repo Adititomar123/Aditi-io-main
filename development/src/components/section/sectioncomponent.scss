@@ -3,6 +3,9 @@
   margin-left: -49px;
   margin-right: -49px;
   background-color: color('grey');
+  @media print {
+    -webkit-print-color-adjust: exact;
+  }
   &__listgroup {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
