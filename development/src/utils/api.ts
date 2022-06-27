@@ -4,20 +4,22 @@
  *
  * API_BASE_URL will be grabbed from the global var
  */
-const API_BASE_URL: string = (window as { [key: string]: any })['API_BASE_URL'] as string;
+const API_BASE_URL: string = (window as {[key: string]: any})[
+  'API_BASE_URL'
+] as string;
 
 interface APIResponse {
-  data?: string | Object,
-  status: boolean,
-  msg?: string,
+  data?: string | Object;
+  status: boolean;
+  msg?: string;
 }
 
 interface FetchRequest {
-  method: string,
+  method: string;
   headers: {
-    'Content-Type': string,
-  },
-  body?: string,
+    'Content-Type': string;
+  };
+  body?: string;
 }
 
 export default class APIUtils {
@@ -29,7 +31,11 @@ export default class APIUtils {
    * @param body {Object}
    * @returns
    */
-  static _makeRequest = async (reqType: string, url: string, data?: Object): Promise<APIResponse> => {
+  static _makeRequest = async (
+    reqType: string,
+    url: string,
+    data?: Object
+  ): Promise<APIResponse> => {
     try {
       const opts: FetchRequest = {
         method: reqType,
@@ -42,10 +48,7 @@ export default class APIUtils {
         opts.body = JSON.stringify(data);
       }
 
-      const res = await fetch(
-        url,
-        opts,
-      );
+      const res = await fetch(url, opts);
 
       const apiRes = await res.json();
 
@@ -57,5 +60,5 @@ export default class APIUtils {
     } catch (err) {
       return Promise.reject(err);
     }
-  }
+  };
 }
