@@ -1,73 +1,74 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-
 export const DIST_FOLDER = 'dist';
 export const SRC_FOLDER = './src';
-export const MANIFEST_PATH = path.join(__dirname, '..', DIST_FOLDER, 'manifest.json');
+export const MANIFEST_PATH = path.join(
+  __dirname,
+  '..',
+  DIST_FOLDER,
+  'manifest.json'
+);
 
 const pagesPath = path.join('.', SRC_FOLDER, 'pages');
 
-export const ASSETS = [
-  'images',
-];
+export const ASSETS = ['images', 'pdf'];
 
 export const getPageFiles = (regex: any) => {
-	// TODO: refactor the way we look for page's js files, as this will break
-	//			 if there is sub folder in each page folder
+  // TODO: refactor the way we look for page's js files, as this will break
+  //			 if there is sub folder in each page folder
 
-	const files: any = [];
-	fs.readdirSync(pagesPath)
-		.forEach((file) => {
-			// obtain page absolute path, this is with the assumption
-			// that the code structure will be pages > page_name > file
-			// check if it's a directory
-			const pagePath = path.join(pagesPath, file);
-			const pageStat = fs.statSync(pagePath);
+  const files: any = [];
+  fs.readdirSync(pagesPath).forEach(file => {
+    // obtain page absolute path, this is with the assumption
+    // that the code structure will be pages > page_name > file
+    // check if it's a directory
+    const pagePath = path.join(pagesPath, file);
+    const pageStat = fs.statSync(pagePath);
 
-			if (pageStat.isDirectory()) {
-				const pageFiles = fs.readdirSync(pagePath);
+    if (pageStat.isDirectory()) {
+      const pageFiles = fs.readdirSync(pagePath);
 
-				pageFiles.forEach((fileName) => {
-					if (fileName.match(regex)) {
-						const temp = `./${pagesPath}/${file}/${fileName}`;
+      pageFiles.forEach(fileName => {
+        if (fileName.match(regex)) {
+          const temp = `./${pagesPath}/${file}/${fileName}`;
 
-						files.push({
-							// file would be the page folder name
-							name: file,
-							entry: temp,
-						});
-					}
-				});
-			}
-		});
+          files.push({
+            // file would be the page folder name
+            name: file,
+            entry: temp,
+          });
+        }
+      });
+    }
+  });
 
-	return files;
-}
+  return files;
+};
 
 export const getPageJSEntries = () => {
-	const pageJS: Array<any> = getPageFiles(/(.*?)\.(js|ts)$/);
+  const pageJS: Array<any> = getPageFiles(/(.*?)\.(js|ts)$/);
 
-	return pageJS.map((item) => {
-		return {
-			// file would be the page folder name
-			name: item.name,
-			entry: item.entry.replace('.ts', ''),
+  return pageJS.map(item => {
+    return {
+      // file would be the page folder name
+      name: item.name,
+      entry: item.entry.replace('.ts', ''),
       type: 'js',
-		}
+    };
   });
-}
+};
 
 export const getPageCSSEntries = () => {
-	const pageCSS: Array<any> = getPageFiles(/.*\.scss$/);
+  const pageCSS: Array<any> = getPageFiles(/.*\.scss$/);
 
-	return pageCSS.map((item) => {
-		return {
+  return pageCSS.map(item => {
+    return {
       name: item.name,
-			entry: item.entry,
+      entry: item.entry,
       type: 'css',
-		}
-	});
+    };
+  });
 };
 
 export const getEntries = () => {
@@ -85,13 +86,10 @@ export const getEntries = () => {
       return memo;
     }
   }, {});
-}
+};
 
 // we should compile base and detect component by default
 export const ENTRIES = {
-  'base': [
-    './src/base.ts',
-    './src/base.scss',
-  ],
+  base: ['./src/base.ts', './src/base.scss'],
   ...getEntries(),
 };

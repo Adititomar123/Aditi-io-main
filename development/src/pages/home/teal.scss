@@ -1,0 +1,30 @@
+body {
+  background-color: color('teal');
+}
+
+.skills {
+  background-color: color('grey');
+  &__listgroup__item {
+    border-left: 5px solid color('teal');
+  }
+}
+.experience {
+  &__listgroup__item__right {
+    border-left: rem(2) dotted color('teal');
+    &__listgroup__item {
+      &::before {
+        border: rem(2) solid color('teal');
+      }
+      &::after {
+        background-color: color('teal');
+      }
+    }
+  }
+  &__listgroup__item__left__tenure {
+    background: color('teal');
+    &::before {
+      border-right-color: color('dark-teal');
+      border-top-color: color('dark-teal');
+    }
+  }
+}
