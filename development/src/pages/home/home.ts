@@ -16,3 +16,11 @@ downloadLink?.addEventListener('click', function () {
     downloadLink?.classList.remove('finished');
   }, 4800);
 });
+
+(function () {
+  const cssHome = document.createElement('Link') as HTMLAnchorElement;
+  cssHome.href = 'css/home.css';
+  cssHome.rel = 'stylesheet';
+  cssHome.type = 'text/css';
+  document.getElementsByTagName('head')[0].appendChild(cssHome);
+})();

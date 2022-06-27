@@ -22,24 +22,29 @@
   "experience": [
     {
       "tenure": "April 2019 - May 2022",
-      "designation": "UI/UX Designer",
+      "designation": "UI Developer",
       "companyname": "WNS Global Services",
       "explist": [
         "Manage website development projects from initial design through completion, optimizing all cross-browser and multi-platform compatibility.",
         "Work closely with programmers and clients to meet project requirements, goals, and desired functionality",
         "Developed e-toolkits for clients to showcase their training materials in a more interactive way including animations and quizzes.",
         "Enhanced user experience and accomplish webpage objectives by creating site structure, navigation, page optimization, and graphics integration.",
-        "Enable site-wide promotions by programming HTML5 SVG to animate particles on web backgrounds."
+        "Enable site-wide promotions by programming HTML5 SVG to animate particles on web backgrounds.",
+        " Updated email newsletters with CSS responsive design which increased overall user engagement.",
+        " Managed front-end development of client sites. Used HTML5, CSS3, and Javascript to develop UX using sharepoint.",
+        " Implemented enhancements that improved web functionality and responsiveness.",
+        " Used Photoshop and XD to create artwork and prototypes."
       ]
     },
     {
       "tenure": "Dec 2017 - March 2019",
-      "designation": "UI/UX Designer",
+      "designation": "UI Developer",
       "companyname": "Cadence Design Systems",
       "explist": [
         "CPG is a E-Learning website to discover guidelines for EDAs and ICs documentation. It offers the ability to share material in all kinds of formats such as videos, slideshows, word documents, and PDFs. Additionally, it provides quizzes to the users to test and improve their skills.",
         "Discussed, analyzed and strategized product design with Product Managers, Customers and Business Managers.",
-        "Developed the UX with interactive functionalities like user registrations, collecting the information of user, quizzes, and feedback emails."
+        "Developed the UX with interactive functionalities like user registrations, collecting the information of user, quizzes, and feedback emails.",
+        "Used HTML5, CSS3, JavaScript, ajax and JSON for development."
       ]
     },
     {
