@@ -39,4 +39,36 @@ $colours: (
   'footnote': #5f6368,
   'teal': #15717d,
   'dark-teal': #165f69,
+  'transparent': rgba(0, 0, 0, 0),
 );
+
+:root {
+  --color-primary: #{color('teal')};
+  --color-primary-2: #{color('coal')};
+  --color-secondary: #{color('white')};
+  --color-secondary-2: #{color('grey')};
+  --color-background: var(--color-primary);
+  --color-foreground: var(--color-secondary);
+  --color-shadow: #{color('dove')};
+  --color-mail: #ea4335;
+  --color-github: var(--color-primary-2);
+  --color-linkedin: #0177b5;
+}
+.darkmode {
+  --color-primary: #{color('grey')};
+  --color-primary-2: #{color('white')};
+  --color-secondary: #{color('coal')};
+  --color-secondary-2: #{color('teal')};
+  --color-background: var(--color-primary);
+  --color-foreground: var(--color-secondary);
+  --color-shadow: #{color('transparent')};
+  --color-mail: var(--color-primary-2);
+  --color-github: var(--color-primary-2);
+  --color-linkedin: var(--color-primary-2);
+}
+// $color-light: #fff;
+// $color-dark: #15717d;
+// $color-primary: #282828;
+// $color-secondary: #e0e0e0;
+// $color-background: var($color-dark);
+// $color-foreground: var($color-light);
