@@ -39,7 +39,7 @@ if (getTheme === 'dark') {
 
 //Lazy loading
 window.addEventListener('DOMContentLoaded', event => {
-  class customLink {
+  class CustomLink {
     href: string;
     rel: string;
     constructor(givenhref: string, givenrel: string) {
@@ -57,6 +57,6 @@ window.addEventListener('DOMContentLoaded', event => {
     }
   }
 
-  const baseLink = new customLink('css/base.css', 'stylesheet');
-  const homeLink = new customLink('css/home.css', 'stylesheet');
+  const baseLink = new CustomLink('css/base.css', 'stylesheet');
+  const homeLink = new CustomLink('css/home.css', 'stylesheet');
 });
