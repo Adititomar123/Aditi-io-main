@@ -43,25 +43,25 @@ $colours: (
 );
 
 :root {
-  --color-primary: #{color('teal')};
-  --color-primary-2: #{color('coal')};
-  --color-secondary: #{color('white')};
-  --color-secondary-2: #{color('grey')};
+  --color-primary: #15717d;
+  --color-primary-2: #282828;
+  --color-secondary: #fff;
+  --color-secondary-2: #e0e0e0;
   --color-background: var(--color-primary);
   --color-foreground: var(--color-secondary);
-  --color-shadow: #{color('dove')};
+  --color-shadow: #ddd;
   --color-mail: #ea4335;
   --color-github: var(--color-primary-2);
   --color-linkedin: #0177b5;
 }
 .darkmode {
-  --color-primary: #{color('grey')};
-  --color-primary-2: #{color('white')};
-  --color-secondary: #{color('coal')};
-  --color-secondary-2: #{color('teal')};
+  --color-primary: #e0e0e0;
+  --color-primary-2: #fff;
+  --color-secondary: #282828;
+  --color-secondary-2: #15717d;
   --color-background: var(--color-primary);
   --color-foreground: var(--color-secondary);
-  --color-shadow: #{color('transparent')};
+  --color-shadow: rgb(0, 0, 0, 0);
   --color-mail: var(--color-primary-2);
   --color-github: var(--color-primary-2);
   --color-linkedin: var(--color-primary-2);

@@ -6,6 +6,7 @@ import '../../svgs/icon-github.svg';
 import '../../svgs/icon-gmail.svg';
 import '../../svgs/icon-theme.svg';
 
+//download button loading
 const downloadLink = document.getElementById('download_CV');
 downloadLink?.addEventListener('click', function () {
   downloadLink?.classList.add('loader');
@@ -36,11 +37,26 @@ if (getTheme === 'dark') {
   document.body.classList.add('darkmode');
 }
 
-//css lazy loading
-(function () {
-  const cssHome = document.createElement('Link') as HTMLAnchorElement;
-  cssHome.href = 'css/home.css';
-  cssHome.rel = 'stylesheet';
-  cssHome.type = 'text/css';
-  document.getElementsByTagName('head')[0].appendChild(cssHome);
-})();
+//Lazy loading
+window.addEventListener('DOMContentLoaded', event => {
+  class customLink {
+    href: string;
+    rel: string;
+    constructor(givenhref: string, givenrel: string) {
+      this.href = givenhref;
+      this.rel = givenrel;
+      this.getLink();
+    }
+    getLink() {
+      const cssLink: HTMLLinkElement = document.createElement(
+        'Link'
+      ) as HTMLLinkElement;
+      cssLink.href = this.href;
+      cssLink.rel = this.rel;
+      document.head.appendChild(cssLink);
+    }
+  }
+
+  const baseLink = new customLink('css/base.css', 'stylesheet');
+  const homeLink = new customLink('css/home.css', 'stylesheet');
+});
