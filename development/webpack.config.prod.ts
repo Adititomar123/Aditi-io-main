@@ -1,7 +1,7 @@
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HTMLCleanUp from './webpack-plugins/html-cleanup';
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-const { merge } = require('webpack-merge');
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
+const {merge} = require('webpack-merge');
 
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -26,7 +26,7 @@ const prodConfig = {
         test: /\.js(\?.*)?$/i,
         parallel: true,
         terserOptions: {
-          output: { comments: false },
+          output: {comments: false},
           mangle: true,
           compress: {
             keep_fargs: false,
@@ -45,17 +45,14 @@ const prodConfig = {
               'console.log',
             ],
           },
-        }
+        },
       }),
     ],
   },
 };
 
 module.exports = (env: any, argv: any) => {
-  const config = merge(
-    baseConfig(env, argv),
-    prodConfig,
-  );
+  const config = merge(baseConfig(env, argv), prodConfig);
 
   config.module = {
     rules: [
@@ -73,14 +70,12 @@ module.exports = (env: any, argv: any) => {
             options: {
               postcssOptions: {
                 ident: 'postcss',
-                plugins: [
-                  require('autoprefixer')()
-                ]
-              }
+                plugins: [require('autoprefixer')()],
+              },
             },
           },
           'sass-loader',
-        ]
+        ],
       },
       {
         test: /\.svg$/,
@@ -89,10 +84,10 @@ module.exports = (env: any, argv: any) => {
             loader: 'svg-sprite-loader',
             options: {
               extract: false,
-            }
+            },
           },
           'svgo-loader',
-        ]
+        ],
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
@@ -103,11 +98,11 @@ module.exports = (env: any, argv: any) => {
               name: '[name].[ext]',
               outputPath: 'images',
               publicPath: '../images/',
-              useRelativePaths: true
-            }
-          }
-        ]
-      }
+              useRelativePaths: true,
+            },
+          },
+        ],
+      },
     ],
   };
 

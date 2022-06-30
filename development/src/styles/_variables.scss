@@ -26,6 +26,7 @@ $colours: (
   'white': #fff,
   'grey': #e0e0e0,
   'green': #007a65,
+  'light-green': #40ad48,
   'yellow': #ffff4a,
   'purple': #6126bf,
   'blue': #3b78e7,
@@ -38,4 +39,30 @@ $colours: (
   'footnote': #5f6368,
   'teal': #15717d,
   'dark-teal': #165f69,
+  'transparent': rgba(0, 0, 0, 0),
 );
+
+:root {
+  --color-primary: #15717d;
+  --color-primary-2: #282828;
+  --color-secondary: #fff;
+  --color-secondary-2: #e0e0e0;
+  --color-background: var(--color-primary);
+  --color-foreground: var(--color-secondary);
+  --color-shadow: #ddd;
+  --color-mail: #ea4335;
+  --color-github: var(--color-primary-2);
+  --color-linkedin: #0177b5;
+}
+.darkmode {
+  --color-primary: #e0e0e0;
+  --color-primary-2: #fff;
+  --color-secondary: #282828;
+  --color-secondary-2: #15717d;
+  --color-background: var(--color-primary);
+  --color-foreground: var(--color-secondary);
+  --color-shadow: rgb(0, 0, 0, 0);
+  --color-mail: var(--color-primary-2);
+  --color-github: var(--color-primary-2);
+  --color-linkedin: var(--color-primary-2);
+}

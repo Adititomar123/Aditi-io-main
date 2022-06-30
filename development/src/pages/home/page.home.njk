@@ -5,12 +5,16 @@
 {% block page_styles %}
   <link rel="stylesheet" href="css/home.css">
 {% endblock %}
-
 {% block header %}
+  <button id="theme-toggle" class="theme-toggle" aria-label="toggle dark mode">
+    <svg role="img">
+      <use xlink:href="#icon-theme"></use>
+    </svg>
+  </button>
   <article>
     <div class="profile">
       <div class="profile__picture">
-        <img src="images/profile-picture.png" alt="Profile picture"/>
+        <img src="images/profile-picture.webp" width="205px" height="205px " alt="Profile picture"/>
       </div>
       <div class="profile__text">
         {% for article in home.article %}
@@ -18,7 +22,8 @@
           <p class="profile__text__area">{{article.area}}</p>
           <p class="profile__text__description">{{article.description}}</p>
         {% endfor %}
-        <a class="profile__link" href="#" download>{{global.app_title}}</a>
+
+        <a class="profile__link" id="download_CV" href="pdf/Resume_Aditi_Tomar.pdf" download>{{global.app_title}}</a>
         {# <button class="profile__btns__btn" type="button" aria-label="See Projects">Projects</button> #}
 
       </div>
@@ -61,13 +66,36 @@
     {% for item in home.education %}
       <li class="education__listgroup__item">
         <h3 class="education__listgroup__item__qualification">{{item.qualification}}</h3>
-        <p class="education__listgroup__item__university">{{item.university}}
-        </li>
-      {% endfor %}
-    </ul>
-    {% endcall %}
-  {% endblock %}
+        <p class="education__listgroup__item__university">{{item.university}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endcall %}
+{% endblock %}
+{% block footer %}
+  <footer class="footer">
+    <div class="footer__social">
+      <a href="https://www.linkedin.com/feed/" target="_blank" aria-label="check out my LinkedIn account">
+        <svg role="img" aria-label="LinkedIn">
+          <use xlink:href="#icon-linkedin"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/Adititomar123" target="_blank" aria-label="check out my github account">
+        <svg role="img" aria-label="Github">
+          <use xlink:href="#icon-github"></use>
+        </svg>
+      </a>
+      <a href="mailto:adititomar2k8@gmail.com" target="_blank" aria-label="check out my gmail account">
+        <svg role="img" aria-label="Gmail">
+          <use xlink:href="#icon-gmail"></use>
+        </svg>
+      </a>
+    </div>
+  </footer>
 
-  {% block page_scripts %}
-    <script src="js/home.js"></script>
-  {% endblock %}
+{% endblock footer %}
+{% block page_scripts %}
+
+  <script src="js/home.js"></script>
+{% endblock %}
+

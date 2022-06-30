@@ -1,5 +1,9 @@
 @import '../../styles/common';
 
+body {
+  background-color: var(--color-primary);
+}
+
 ul,
 ol {
   list-style: none;
@@ -8,7 +12,7 @@ ol {
 }
 
 .container {
-  background-color: color('white');
+  background-color: var(--color-secondary);
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -19,6 +23,26 @@ ol {
   @media (min-width: $laptop) {
     margin: rem(30) auto;
     border-radius: rem(20);
+  }
+  @media print {
+    margin: 0;
+  }
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--color-primary-2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  position: absolute;
+  right: 26px;
+  top: 26px;
+  cursor: pointer;
+  svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -38,12 +62,16 @@ ol {
   @media (min-width: $laptop) {
     grid-template-columns: minmax(300px, 1fr) minmax(400px, 100%);
   }
+  @media print {
+    margin: 3% 0;
+    grid-template-columns: minmax(300px, 1fr) minmax(400px, 100%);
+  }
   &__picture {
     box-shadow: 1px 1px 9px 4px color('dove');
     border-radius: 1000px;
     height: 250px;
     width: 250px;
-    border: rem(18) solid color('white');
+    border: rem(18) solid var(--color-secondary);
     overflow: hidden;
     @media (min-width: $tablet) {
       width: 250px;
@@ -63,7 +91,7 @@ ol {
     }
     &__area {
       font-size: rem(16);
-      color: color('smoke');
+      color: var(--color-primary-2);
     }
     &__description {
       font-size: rem(14);
@@ -78,13 +106,74 @@ ol {
     font-size: rem(13);
     cursor: pointer;
     text-decoration: none;
-    border: 2px solid color('teal');
-    color: #000;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary-2);
     width: max-content;
+    transition: padding 0.5s ease;
     &:hover {
-      background-color: color('teal');
-      color: #fff;
+      background-color: var(--color-shadow);
     }
+  }
+}
+
+.loader,
+.finished {
+  position: relative;
+  padding-right: rem(48);
+  transition: all 0.2 ease;
+}
+.loader:after {
+  content: '';
+  position: absolute;
+  height: rem(30);
+  width: rem(30);
+  background: transparent;
+  border: rem(2) solid #ff4e45;
+  border-radius: 50%;
+  border-top-color: transparent;
+  -webkit-animation: animate 1s 0.4s linear infinite;
+  animation: animate 1s 0.4s linear infinite;
+  right: rem(7);
+  top: rem(5);
+  transition-delay: 0.6s;
+}
+@keyframes animate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.finished:after {
+  content: '';
+  position: absolute;
+  height: rem(30);
+  width: rem(30);
+  border: rem(2) solid color('light-green');
+  border-radius: 50%;
+  -webkit-animation: special 1s ease-in;
+  animation: special 1s ease-in;
+  right: rem(7);
+  top: rem(5);
+}
+.finished:before {
+  content: '';
+  background-image: url(../../images/green-check.png);
+  background-size: 18px 17px;
+  position: absolute;
+  height: rem(25);
+  width: rem(25);
+  background-repeat: no-repeat;
+  -webkit-animation: special 1s ease-in;
+  animation: special 1s ease-in;
+  right: rem(5);
+  z-index: 1;
+  top: rem(13);
+}
+@keyframes special {
+  10% {
+    transform: scale(0.8) translateY(0px);
+  }
+  35% {
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -100,7 +189,7 @@ h2 {
 .experience {
   &__listgroup {
     &__item {
-      box-shadow: rem(5) rem(9) rem(10) rem(4) color('grey');
+      box-shadow: rem(5) rem(9) rem(10) rem(4) var(--color-shadow);
       padding: rem(20);
       border-radius: rem(10);
       border: 1px solid color('dove');
@@ -115,25 +204,28 @@ h2 {
         width: 220px;
         &__tenure {
           position: relative;
-          background: color('teal');
+          background: var(--color-primary);
           padding: rem(4) rem(15) rem(4) rem(28);
-          color: color('white');
+          color: var(--color-secondary);
           margin-left: -35px;
           margin-bottom: rem(8);
           &:before {
             content: '';
             position: absolute;
             border: 5px solid transparent;
-            border-right-color: color('dark-teal');
-            border-top-color: color('dark-teal');
+            border-right-color: var(--color-primary);
+            border-top-color: var(--color-primary);
             bottom: -10px;
             left: 0;
+          }
+          @media print {
+            -webkit-print-color-adjust: exact;
           }
         }
       }
       &__right {
         width: 100%;
-        border-left: rem(2) dotted color('teal');
+        border-left: rem(2) dotted var(--color-primary);
         padding-left: rem(20);
         &__listgroup {
           &__item {
@@ -144,8 +236,8 @@ h2 {
               position: absolute;
               width: 12px;
               height: 12px;
-              background-color: color('white');
-              border: rem(2) solid color('teal');
+              background-color: var(--color-secondary);
+              border: rem(2) solid var(--color-primary);
               border-radius: 10px;
               left: -32px;
               top: rem(4);
@@ -155,7 +247,7 @@ h2 {
               position: absolute;
               width: 8px;
               height: 2px;
-              background-color: color('teal');
+              background-color: var(--color-primary);
               left: -20px;
               top: rem(8);
             }
@@ -192,13 +284,37 @@ h2 {
         position: absolute;
         width: 10px;
         height: 10px;
-        background-color: color('teal');
+        background-color: var(--color-primary);
         left: 0;
         top: rem(5);
+        @media print {
+          -webkit-print-color-adjust: exact;
+        }
       }
     }
     @media (min-width: $tablet) {
       flex-direction: row;
     }
+  }
+}
+
+.footer {
+  margin-top: rem(40);
+  padding-top: rem(15);
+  border-top: rem(2) solid color('grey');
+  display: flex;
+  justify-content: flex-end;
+  &__social {
+    display: flex;
+    gap: 11px;
+    flex-direction: row-reverse;
+  }
+  &__social a {
+    display: block;
+  }
+  &__social svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-linkedin);
   }
 }

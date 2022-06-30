@@ -4,34 +4,34 @@ import * as path from 'path';
 const cheerio = require('cheerio');
 const Critters = require('critters');
 const glob = require('glob');
-const { minify } = require('html-minifier-terser');
+const {minify} = require('html-minifier-terser');
 
-import { DIST_FOLDER, MANIFEST_PATH } from "./utils";
+import {DIST_FOLDER, MANIFEST_PATH} from './utils';
 
 interface CriticalCSSOptions {
-  path?: string,
-  publicPath?: string,
-  external?: boolean,
-  inlineThreshold?: number,
-  minimumExternalSize?: number,
-  pruneSource?: boolean,
-  mergeStylesheets?: boolean,
-  additionalStylesheets?: Array<string>,
-  preload?: string,
-  noscriptFallback?: boolean,
-  inlineFonts?: boolean,
-  preloadFonts?: boolean,
-  fonts?: boolean,
-  keyframes?: string,
-  compress?: boolean,
-  logLevel?: string,
-  logger?: any,
-};
+  path?: string;
+  publicPath?: string;
+  external?: boolean;
+  inlineThreshold?: number;
+  minimumExternalSize?: number;
+  pruneSource?: boolean;
+  mergeStylesheets?: boolean;
+  additionalStylesheets?: Array<string>;
+  preload?: string;
+  noscriptFallback?: boolean;
+  inlineFonts?: boolean;
+  preloadFonts?: boolean;
+  fonts?: boolean;
+  keyframes?: string;
+  compress?: boolean;
+  logLevel?: string;
+  logger?: any;
+}
 
 interface HTMLCleanUpOptions {
-  criticalCSS?: boolean | CriticalCSSOptions,
-  cspCompliance?: boolean,
-};
+  criticalCSS?: boolean | CriticalCSSOptions;
+  cspCompliance?: boolean;
+}
 
 export default class HTMLCleanUp {
   static defaultOptions = {
@@ -58,7 +58,10 @@ export default class HTMLCleanUp {
     };
 
     if (options.criticalCSS && typeof options.criticalCSS === 'object') {
-      this.options.criticalCSS = { ...HTMLCleanUp.defaultOptions.criticalCSS, ...options.criticalCSS };
+      this.options.criticalCSS = {
+        ...HTMLCleanUp.defaultOptions.criticalCSS,
+        ...options.criticalCSS,
+      };
       this.critters = new Critters(this.options.criticalCSS);
     }
 
@@ -72,14 +75,14 @@ export default class HTMLCleanUp {
     // webpack module instance can be accessed from the compiler object,
     // this ensures that correct version of the module is used
     // (do not require/import the webpack or any symbols from it directly).
-    const { webpack } = compiler;
+    const {webpack} = compiler;
 
     // Compilation object gives us reference to some useful constants.
-    const { Compilation } = webpack;
+    const {Compilation} = webpack;
 
     // RawSource is one of the "sources" classes that should be used
     // to represent asset sources in compilation.
-    const { RawSource } = webpack.sources;
+    const {RawSource} = webpack.sources;
 
     // Specify the event hook to attach to
     compiler.hooks.done.tapAsync(
@@ -88,15 +91,18 @@ export default class HTMLCleanUp {
         if (!this.manifest) {
           this.manifest = require(MANIFEST_PATH);
         }
-        const filesToWatch = glob.sync(path.join(__dirname, '..', DIST_FOLDER, '**/*.html'), {
-          absolute: true,
-        });
+        const filesToWatch = glob.sync(
+          path.join(__dirname, '..', DIST_FOLDER, '**/*.html'),
+          {
+            absolute: true,
+          }
+        );
 
         filesToWatch.forEach(async (f: string) => {
           let templateContent = fs.readFileSync(f, 'utf8');
 
           // update hash name on css/js
-          Object.keys(this.manifest).forEach((item) => {
+          Object.keys(this.manifest).forEach(item => {
             const re = new RegExp(`(css|js)\/${item}`);
 
             templateContent = templateContent.replace(re, this.manifest[item]);
@@ -166,7 +172,7 @@ export default class HTMLCleanUp {
               const elemStyle = $(elem).attr('style');
               inlineStyles.push(`.${className} {${elemStyle}}`);
 
-              const currentClass = $(elem).attr('class')
+              const currentClass = $(elem).attr('class');
 
               $(elem).attr('class', `${currentClass || ''} ${className}`);
               $(elem).removeAttr('style');
