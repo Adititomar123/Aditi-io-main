@@ -67,7 +67,7 @@ ol {
     grid-template-columns: minmax(300px, 1fr) minmax(400px, 100%);
   }
   &__picture {
-    box-shadow: 1px 1px 9px 4px color('dove');
+    box-shadow: var(--shadow-picture);
     border-radius: 1000px;
     height: 250px;
     width: 250px;
@@ -79,6 +79,7 @@ ol {
     }
     img {
       width: 100%;
+      height: auto;
     }
   }
   &__text {
@@ -86,17 +87,17 @@ ol {
     flex-direction: column;
     justify-content: center;
     &__title {
-      font-size: rem(45);
+      font-size: clamp(2rem, -0.875rem + 8vw, 3.2rem);
       font-weight: font-weight('bold');
     }
     &__area {
-      font-size: rem(16);
+      font-size: clamp(1rem, -0.675rem + 5vw, 1.2rem);
       color: var(--color-primary-2);
     }
     &__description {
-      font-size: rem(14);
+      font-size: clamp(1rem, -0.675rem + 4vw, 1.1rem);
       padding: rem(18) 0 rem(25);
-      line-height: rem(22);
+      line-height: clamp(1rem, 1.8rem, 2.1rem);
     }
   }
   &__link {
@@ -182,14 +183,14 @@ section {
 }
 
 h2 {
-  font-size: rem(24);
+  font-size: clamp(1.6rem, -0.875rem + 5vw, 1.8rem);
   padding-bottom: rem(20);
 }
 
 .experience {
   &__listgroup {
     &__item {
-      box-shadow: rem(5) rem(9) rem(10) rem(4) var(--color-shadow);
+      box-shadow: var(--shadow);
       padding: rem(20);
       border-radius: rem(10);
       border: 1px solid color('dove');
@@ -204,11 +205,12 @@ h2 {
         width: 220px;
         &__tenure {
           position: relative;
-          background: var(--color-primary);
+          background: var(--color-tealbg);
           padding: rem(4) rem(15) rem(4) rem(28);
-          color: var(--color-secondary);
+          color: color('white');
           margin-left: -35px;
           margin-bottom: rem(8);
+          border: 1px solid var(--color-border);
           &:before {
             content: '';
             position: absolute;
@@ -216,7 +218,7 @@ h2 {
             border-right-color: var(--color-primary);
             border-top-color: var(--color-primary);
             bottom: -10px;
-            left: 0;
+            left: -1px;
           }
           @media print {
             -webkit-print-color-adjust: exact;
