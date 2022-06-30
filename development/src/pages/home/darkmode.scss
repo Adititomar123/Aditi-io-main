@@ -1,0 +1,12 @@
+.darkmode {
+  --color-primary: #e0e0e0;
+  --color-primary-2: #fff;
+  --color-secondary: #282828;
+  --color-secondary-2: #15717d;
+  --color-background: var(--color-primary);
+  --color-foreground: var(--color-secondary);
+  --color-shadow: rgb(0, 0, 0, 0);
+  --color-mail: var(--color-primary-2);
+  --color-github: var(--color-primary-2);
+  --color-linkedin: var(--color-primary-2);
+}

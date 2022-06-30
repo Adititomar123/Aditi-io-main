@@ -6,7 +6,7 @@ const glob = require('glob');
 const marked = require('marked');
 const nunjucks = require('nunjucks');
 
-import { getPageFiles, SRC_FOLDER } from "./utils";
+import {getPageFiles, SRC_FOLDER} from './utils';
 
 /**
  * Set options for marked package.
@@ -32,14 +32,14 @@ export default class NunjucksNonHTMLBuild {
     // webpack module instance can be accessed from the compiler object,
     // this ensures that correct version of the module is used
     // (do not require/import the webpack or any symbols from it directly).
-    const { webpack } = compiler;
+    const {webpack} = compiler;
 
     // Compilation object gives us reference to some useful constants.
-    const { Compilation } = webpack;
+    const {Compilation} = webpack;
 
     // RawSource is one of the "sources" classes that should be used
     // to represent asset sources in compilation.
-    const { RawSource } = webpack.sources;
+    const {RawSource} = webpack.sources;
 
     // add file to watch
     compiler.hooks.afterCompile.tapAsync(
@@ -83,27 +83,40 @@ export default class NunjucksNonHTMLBuild {
           }
         );
 
-        const robotsDataPath = path.join(__dirname, '..', SRC_FOLDER, 'data', `robots.json`);
-        const sitemapDataPath = path.join(__dirname, '..', SRC_FOLDER, 'data', `sitemap.json`);
-        const globalDataPath = path.join(__dirname, '..', SRC_FOLDER, 'data', `global.json`);
+        const robotsDataPath = path.join(
+          __dirname,
+          '..',
+          SRC_FOLDER,
+          'data',
+          `robots.json`
+        );
+        const sitemapDataPath = path.join(
+          __dirname,
+          '..',
+          SRC_FOLDER,
+          'data',
+          `sitemap.json`
+        );
+        const globalDataPath = path.join(
+          __dirname,
+          '..',
+          SRC_FOLDER,
+          'data',
+          `global.json`
+        );
 
         filesToWatch.forEach(async (file: any) => {
           const out = path.basename(file).replace('.njk', '');
 
           const templateData = fs.readFileSync(file, 'utf8');
 
-          let templateContent = nunjucksEnv.renderString(
-            templateData, {
-              global: JSON.parse(fs.readFileSync(globalDataPath, 'utf-8')),
-              robots: JSON.parse(fs.readFileSync(robotsDataPath, 'utf-8')),
-              sitemap: JSON.parse(fs.readFileSync(sitemapDataPath, 'utf-8')),
-            },
-          );
+          let templateContent = nunjucksEnv.renderString(templateData, {
+            global: JSON.parse(fs.readFileSync(globalDataPath, 'utf-8')),
+            robots: JSON.parse(fs.readFileSync(robotsDataPath, 'utf-8')),
+            sitemap: JSON.parse(fs.readFileSync(sitemapDataPath, 'utf-8')),
+          });
 
-          compilation.emitAsset(
-            out,
-            new RawSource(templateContent)
-          );
+          compilation.emitAsset(out, new RawSource(templateContent));
         });
 
         callback();
