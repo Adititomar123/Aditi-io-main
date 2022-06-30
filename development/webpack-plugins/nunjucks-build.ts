@@ -5,7 +5,7 @@ const glob = require('glob');
 const marked = require('marked');
 const nunjucks = require('nunjucks');
 
-import { getPageFiles, SRC_FOLDER } from "./utils";
+import {getPageFiles, SRC_FOLDER} from './utils';
 
 /**
  * Set options for marked package.
@@ -16,7 +16,6 @@ marked.setOptions({
   gfm: true,
   breaks: true,
 });
-
 
 export default class NunjucksBuild {
   files: Array<any> = [];
@@ -39,21 +38,40 @@ export default class NunjucksBuild {
     });
 
     const nunjucksEnv = new nunjucks.Environment(
-      new nunjucks.FileSystemLoader([`./src`, `./src/components`, `./src/pages`])
+      new nunjucks.FileSystemLoader([
+        `./src`,
+        `./src/components`,
+        `./src/pages`,
+      ])
     );
     nunjucksEnv.addFilter('json', JSON.stringify);
     nunjucksEnv.addFilter('markdown', marked.parse);
 
     const pageHTML: Array<any> = getPageFiles(/.*\.njk$/);
 
-    pageHTML.forEach(async (page) => {
-      const out = path.join(page.name === 'home' ? '' : page.name, 'index.html');
+    pageHTML.forEach(async page => {
+      const out = path.join(
+        page.name === 'home' ? '' : page.name,
+        'index.html'
+      );
 
       const templateData = fs.readFileSync(page.entry, 'utf8');
 
       let pageData = {};
-      const pageDataPath = path.join(__dirname, '..', SRC_FOLDER, 'data', `${page.name}.json`);
-      const globalDataPath = path.join(__dirname, '..', SRC_FOLDER, 'data', `global.json`);
+      const pageDataPath = path.join(
+        __dirname,
+        '..',
+        SRC_FOLDER,
+        'data',
+        `${page.name}.json`
+      );
+      const globalDataPath = path.join(
+        __dirname,
+        '..',
+        SRC_FOLDER,
+        'data',
+        `global.json`
+      );
 
       if (fs.existsSync(pageDataPath)) {
         pageData = JSON.parse(fs.readFileSync(pageDataPath, 'utf-8'));
@@ -64,10 +82,7 @@ export default class NunjucksBuild {
         [page.name]: pageData,
       });
 
-      compiler(
-        out,
-        templateContent,
-      );
+      compiler(out, templateContent);
     });
   }
 
@@ -76,20 +91,24 @@ export default class NunjucksBuild {
     // webpack module instance can be accessed from the compiler object,
     // this ensures that correct version of the module is used
     // (do not require/import the webpack or any symbols from it directly).
-    const { webpack } = compiler;
+    const {webpack} = compiler;
 
     // Compilation object gives us reference to some useful constants.
-    const { Compilation } = webpack;
+    const {Compilation} = webpack;
 
     // RawSource is one of the "sources" classes that should be used
     // to represent asset sources in compilation.
-    const { RawSource } = webpack.sources;
+    const {RawSource} = webpack.sources;
 
     compiler.hooks.make.tapAsync(
       'NunjucksBuildWebpackPlugin',
       (compilation: any, callback: Function) => {
-        compilation.contextDependencies.add(path.resolve(__dirname, '..', SRC_FOLDER, 'components'));
-        compilation.contextDependencies.add(path.resolve(__dirname, '..', SRC_FOLDER, 'pages'));
+        compilation.contextDependencies.add(
+          path.resolve(__dirname, '..', SRC_FOLDER, 'components')
+        );
+        compilation.contextDependencies.add(
+          path.resolve(__dirname, '..', SRC_FOLDER, 'pages')
+        );
 
         callback();
       }
@@ -115,13 +134,15 @@ export default class NunjucksBuild {
 
         const filesToWatch = [...pagesToWatch, ...componentToWatch];
 
-        filesToWatch.filter((f: string) => !this.files.includes(f)).forEach((f: string) => {
-          if (Array.isArray(compilation.fileDependencies)) {
-            compilation.fileDependencies.push(f);
-          } else {
-            compilation.fileDependencies.add(f);
-          }
-        });
+        filesToWatch
+          .filter((f: string) => !this.files.includes(f))
+          .forEach((f: string) => {
+            if (Array.isArray(compilation.fileDependencies)) {
+              compilation.fileDependencies.push(f);
+            } else {
+              compilation.fileDependencies.add(f);
+            }
+          });
 
         this.files = [...filesToWatch];
 
@@ -134,10 +155,7 @@ export default class NunjucksBuild {
       'NunjucksBuildWebpackPlugin',
       (compilation: any, callback: Function) => {
         this._rebuildPage((out: string, templateContent: string) => {
-          compilation.emitAsset(
-            out,
-            new RawSource(templateContent)
-          );
+          compilation.emitAsset(out, new RawSource(templateContent));
         });
 
         callback();

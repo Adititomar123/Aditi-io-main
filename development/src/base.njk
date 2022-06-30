@@ -12,11 +12,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://storage.googleapis.com/operating-anagram-8280/favicon-16x16.png">
     <link rel="shortcut icon" href="https://storage.googleapis.com/operating-anagram-8280/favicon.ico">
     {# <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Google+Sans+Text:400,500,700,400i,500i,700i|Google+Sans:400,500|Product+Sans:400&amp;lang=en"> #}
-    <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Inter:wght@100&family=Roboto:wght@300&display=swap">
+    <link  href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Roboto:wght@300&display=swap" rel="stylesheet">
 
     {% block third_party_styles %}{% endblock third_party_styles %}
-    {% block base_styles %}{% endblock base_styles %}
-
+    {% block base_styles %}
+      <link href="{{"css/base.css"}}" rel="stylesheet">
+    {% endblock base_styles %}
     {% block page_styles %}{% endblock page_styles %}
   </head>
 
@@ -40,6 +41,9 @@
 
       {% block third_party_scripts %}{% endblock third_party_scripts %}
       {% block base_script %}
+        {# <script>
+          window.css = 'css/darkmode.css';
+        </script> #}
         <script defer src="{{"js/base.js"}}"></script>
       {% endblock base_script %}
       {% block page_scripts %}{% endblock page_scripts %}
