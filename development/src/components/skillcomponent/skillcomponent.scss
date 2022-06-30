@@ -1,8 +1,9 @@
 @mixin skillList {
-  background-color: #fff;
-  padding: 12px 10px;
+  background-color: var(--color-skillitembg);
+  padding: 12px 8px;
   border-radius: 0 3px 3px 0;
-  border-left: 5px solid var(--color-primary);
   font-size: 1rem;
-  color: color('coal');
+  color: var(--color-primary-2);
+  border: 1px solid color('white');
+  border-left: 5px solid var(--color-primary);
 }
