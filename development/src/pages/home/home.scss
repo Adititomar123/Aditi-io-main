@@ -17,12 +17,13 @@ ol {
   width: 100%;
   margin: 0 auto;
   border-radius: 0;
-  padding: rem(30) rem(40);
+  padding: 2rem 1.5rem;
   z-index: 2;
   position: relative;
   @media (min-width: $laptop) {
     margin: rem(30) auto;
     border-radius: rem(20);
+    padding: 2rem 3rem;
   }
   @media print {
     margin: 0;
@@ -52,18 +53,20 @@ ol {
 .profile {
   display: flex;
   flex-direction: column;
-  margin: 6% 4%;
+  margin: 0 0 8% 0;
   grid-template-columns: minmax(250px, 1fr) minmax(330px, 100%);
-  gap: rem(40);
+  gap: rem(15);
   align-items: center;
   @media (min-width: $tablet) {
     display: grid;
     grid-template-columns: minmax(250px, 1fr) minmax(400px, 100%);
     margin: 3% 3% 5%;
-    gap: 20px;
+    gap: rem(20);
   }
   @media (min-width: $laptop) {
     grid-template-columns: minmax(300px, 1fr) minmax(400px, 100%);
+    margin: 6% 4%;
+    gap: rem(40);
   }
   @media print {
     margin: 3% 0;
@@ -72,14 +75,21 @@ ol {
   }
   &__picture {
     box-shadow: var(--shadow-picture);
-    border-radius: 1000px;
-    height: 250px;
-    width: 250px;
-    border: rem(18) solid var(--color-secondary);
+    height: 100px;
+    width: 100px;
+    border: 0.4rem solid var(--color-secondary);
     overflow: hidden;
     @media (min-width: $tablet) {
-      width: 250px;
+      border-radius: 1000px;
+      height: 200px;
+      width: 200px;
+      border: rem(12) solid var(--color-secondary);
+    }
+    @media (min-width: $laptop) {
+      border-radius: 1000px;
       height: 250px;
+      width: 250px;
+      border: rem(18) solid var(--color-secondary);
     }
     @media print {
       display: none;
@@ -94,7 +104,7 @@ ol {
     flex-direction: column;
     justify-content: center;
     &__title {
-      font-size: clamp(2rem, -0.875rem + 8vw, 3.2rem);
+      font-size: clamp(2rem, -0.875rem + 6vw, 3rem);
       font-weight: font-weight('bold');
       @media print {
         font-size: rem(16);
@@ -109,9 +119,13 @@ ol {
       }
     }
     &__description {
-      font-size: clamp(1rem, -0.675rem + 4vw, 1.1rem);
-      padding: rem(18) 0 rem(25);
-      line-height: clamp(1rem, 1.8rem, 2.1rem);
+      font-size: clamp(1rem, -0.675rem + 3vw, 1.1rem);
+      padding: rem(14) 0 rem(16);
+      line-height: clamp(0.5rem, 1.5rem, 1.5rem);
+      @media (min-width: $laptop) {
+        padding: rem(18) 0 rem(25);
+        line-height: clamp(1.4rem, 1.9rem, 2.1rem);
+      }
       @media print {
         font-size: rem(11);
         line-height: rem(15);
@@ -120,7 +134,7 @@ ol {
     }
   }
   &__link {
-    padding: rem(12) rem(20);
+    padding: rem(12) rem(15);
     border-radius: rem(50);
     margin-right: rem(15);
     font-size: rem(13);
@@ -130,6 +144,10 @@ ol {
     color: var(--color-primary-2);
     width: max-content;
     transition: padding 0.5s ease;
+    @media (min-width: $laptop) {
+      padding: rem(12) rem(20);
+      line-height: clamp(1rem, 1.8rem, 2.1rem);
+    }
     &:hover {
       background-color: var(--color-shadow);
     }
@@ -201,18 +219,24 @@ ol {
 }
 
 section {
-  padding-top: rem(40);
+  padding-top: rem(20);
   @media print {
+    padding-top: rem(20);
+  }
+  @media (min-width: $tablet) {
     padding-top: rem(20);
   }
 }
 
 h2 {
   font-size: clamp(1.6rem, -0.875rem + 5vw, 1.8rem);
-  padding-bottom: rem(20);
+  padding-bottom: rem(15);
   @media print {
     font-size: rem(14);
     padding-bottom: rem(10);
+  }
+  @media (min-width: $tablet) {
+    padding-bottom: rem(20);
   }
 }
 
@@ -227,8 +251,11 @@ h2 {
       flex-direction: column;
       line-height: rem(18);
       font-size: rem(13);
-      gap: rem(30);
+      gap: rem(20);
       margin-bottom: rem(20);
+      @media (min-width: $tablet) {
+        gap: rem(30);
+      }
       &:nth-child(1) {
         @media print {
           .experience__listgroup__item__right__listgroup__item {
