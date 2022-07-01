@@ -105,6 +105,7 @@ ol {
       color: var(--color-primary-2);
       @media print {
         font-size: rem(12);
+        color: #131313;
       }
     }
     &__description {

@@ -13,6 +13,9 @@
 html,
 body {
   color: var(--color-primary-2);
+  @media print {
+    color: #131313;
+  }
 }
 
 html {
