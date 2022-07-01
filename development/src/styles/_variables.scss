@@ -43,21 +43,39 @@ $colours: (
 );
 
 :root {
+  --color-body: hsl(187deg 71% 29% / 100%);
   --color-primary: #15717d;
-  --color-primary-2: #282828;
+  --color-primary-2: #131313;
   --color-secondary: #fff;
   --color-secondary-2: #e0e0e0;
   --color-background: var(--color-primary);
   --color-foreground: var(--color-secondary);
-  --color-shadow: #ddd;
+  --shadow-color: hsl(0deg 0% 87% / 50%);
   --color-mail: #ea4335;
   --color-github: var(--color-primary-2);
   --color-linkedin: #0177b5;
+  --color-skillbg: hsl(0deg 0% 88% / 100%);
+  --color-skillitembg: hsl(0deg 0% 100% / 100%);
+  --color-tealbg: hsl(187deg 71% 29% / 100%);
+  --color-border: var(--color-primary);
+  --shadow: 0.3px 0.5px 0.6px var(--shadow-color),
+    0.5px 1px 1.1px -0.9px var(--shadow-color),
+    1.1px 1.5px 2.3px -1.8px var(--shadow-color),
+    2.3px 2px 5px -2.7px var(--shadow-color),
+    3.4px 2.5px 7.3px -1.6px var(--shadow-color),
+    5.8px 3px 10.3px -4.6px var(--shadow-color);
+  --shadow-picture: -0.7px -1.5px 1.6px var(--shadow-color),
+    -1.5px 0px 2.1px 2.1px var(--shadow-color),
+    0.1px -0.9px 4.3px 3.2px var(--shadow-color),
+    -2.7px -2.3px 6px -4.7px var(--shadow-color),
+    5.4px 4.8px 8.3px -3.6px var(--shadow-color),
+    7.8px 5.6px 10.3px -6.6px var(--shadow-color);
 }
 .darkmode {
+  --color-body: hsl(0deg 0% 13%);
   --color-primary: #e0e0e0;
-  --color-primary-2: #fff;
-  --color-secondary: #282828;
+  --color-primary-2: #eeeeee;
+  --color-secondary: #131313;
   --color-secondary-2: #15717d;
   --color-background: var(--color-primary);
   --color-foreground: var(--color-secondary);
@@ -65,4 +83,8 @@ $colours: (
   --color-mail: var(--color-primary-2);
   --color-github: var(--color-primary-2);
   --color-linkedin: var(--color-primary-2);
+  --color-skillbg: hsl(0deg 0% 88% / 0%);
+  --color-skillitembg: hsl(0deg 0% 100% / 0%);
+  --color-tealbg: hsl(187deg 71% 29% / 0%);
+  --color-border: var(--color-primary-2);
 }
