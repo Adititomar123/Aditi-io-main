@@ -43,6 +43,7 @@ $colours: (
 );
 
 :root {
+  --color-body: hsl(187deg 71% 29% / 100%);
   --color-primary: #15717d;
   --color-primary-2: #131313;
   --color-secondary: #fff;
@@ -71,6 +72,7 @@ $colours: (
     7.8px 5.6px 10.3px -6.6px var(--shadow-color);
 }
 .darkmode {
+  --color-body: hsl(0deg 0% 13%);
   --color-primary: #e0e0e0;
   --color-primary-2: #eeeeee;
   --color-secondary: #131313;

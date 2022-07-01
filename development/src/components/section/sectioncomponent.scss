@@ -7,8 +7,17 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px 30px;
+    @media print {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
     &__item {
       @include skillList;
     }
+  }
+  @media print {
+    padding: 0;
+    margin: 0;
   }
 }
