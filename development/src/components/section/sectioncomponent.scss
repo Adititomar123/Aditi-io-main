@@ -11,7 +11,7 @@
   &__listgroup {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(147px, 1fr));
-    gap: 12px 12px;
+    gap: 12px 15px;
     @media (min-width: $tablet) {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 20px 30px;

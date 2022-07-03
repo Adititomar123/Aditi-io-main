@@ -47,6 +47,39 @@ if (
 ) {
   document.body.classList.remove('darkmode');
 }
+
+//readmore
+const x = window.matchMedia('(max-width: 700px)');
+if (x.matches) {
+  const classes = document.getElementsByClassName('specialclass');
+  const classarr = Object.values(classes);
+  for (const i in classarr) {
+    const a = document.createElement('a');
+    classarr[i].appendChild(a).classList.add('readmore');
+  }
+  const readbtns = document.querySelectorAll('.readmore');
+  for (let i = 0; i < readbtns.length; i++) {
+    const olelement = readbtns[i].parentNode as HTMLElement;
+    const list = olelement.getElementsByTagName('li');
+    const liarray = Object.values(list);
+    liarray.shift();
+    for (let j = 0; j < liarray.length; j++) {
+      liarray[j].style.display = 'none';
+    }
+    readbtns[i].addEventListener('click', () => {
+      olelement.classList.toggle('active');
+      if (olelement.classList.contains('active')) {
+        for (let j = 0; j < liarray.length; j++) {
+          liarray[j].style.display = 'block';
+        }
+      } else {
+        for (let j = 0; j < liarray.length; j++) {
+          liarray[j].style.display = 'none';
+        }
+      }
+    });
+  }
+}
 //Lazy loading
 // window.addEventListener('DOMContentLoaded', event => {
 //   class CustomLink {
