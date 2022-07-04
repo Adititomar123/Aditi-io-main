@@ -14,15 +14,15 @@
   "linterOptions": {
     "exclude": [
       "node_modules/**/*.*",
-      "webpack.config.ts", "webpack.config.prod.ts"
+      "webpack.config.ts",
+      "webpack.config.prod.ts"
     ]
   },
   "compileOnSave": false,
-  "include": [
-    "src/**/*.ts",
-  ],
+  "include": ["src/**/*.ts"],
   "exclude": [
     "node_modules/**/*.*",
-    "webpack.config.ts", "webpack.config.prod.ts"
+    "webpack.config.ts",
+    "webpack.config.prod.ts"
   ]
 }

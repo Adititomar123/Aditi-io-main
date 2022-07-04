@@ -47,6 +47,7 @@ ol {
   svg {
     width: 20px;
     height: 20px;
+    fill: var(--color-primary-2);
   }
 }
 
@@ -513,7 +514,15 @@ h2 {
   &__social svg {
     width: 1.5rem;
     height: 1.5rem;
-    color: var(--color-linkedin);
+  }
+  a.linkedin {
+    fill: var(--color-linkedin);
+  }
+  a.github {
+    fill: var(--color-github);
+  }
+  a.gmail {
+    fill: var(--color-mail);
   }
 }
 .darkmode .experience,

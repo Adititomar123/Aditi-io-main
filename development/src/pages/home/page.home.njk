@@ -5,7 +5,6 @@
 {% block page_styles %}
   <link rel="stylesheet" href="css/home.css">
 {% endblock %}
-
 {% block header %}
   <button id="theme-toggle" class="theme-toggle" aria-label="toggle dark mode">
     <svg role="img">
@@ -29,80 +28,73 @@
 
       </div>
     </div>
-    <div class="profile__text">
-      {% for article in home.article %}
-        <h1 class="profile__text__title">{{article.name}}</h1>
-        <p class="profile__text__description">{{article.description}}</p>
-      {% endfor %}
-      <div class="profile__btns">
-        <button class="profile__btns__resumebtn" type="button" aria-label="Download CV">Download CV</button>
-        <button type="button" aria-label="See Projects">Projects</button>
-      </div>
-    </div>
-  </div>
-</article>
+  </article>
 {% endblock header %}
 
 {% block main %}
-{% call sectioncomponent('Professional Skillset', 'skills') %}
-<ul class="skills__listgroup">
-  {% for skill in home.skilllist %}
-    {{skillcomponent(skill)}}
-  {% endfor %}
-</ul>
-{% endcall %}
+  {% call sectioncomponent('Professional Skillset', 'skills') %}
+  <ul class="skills__listgroup">
+    {% for skill in home.skilllist %}
+      {{skillcomponent(skill)}}
+    {% endfor %}
+  </ul>
+  {% endcall %}
 
-{% call sectioncomponent('Experience', 'experience') %}
-<ol class="experience__listgroup">
-  {% for item in home.experience %}
-    <li class="experience__listgroup__item">
-      <div class="experience__listgroup__item__left">
-        <h3 class="experience__listgroup__item__left__tenure">{{ item.tenure}}</h3>
-        <p  class="experience__listgroup__item__left__designation" >{{item.designation}}</p>
-        <p class="experience__listgroup__item__left__company">{{item.companyname}}</p>
-      </div>
-      <div class="experience__listgroup__item__right">
-        <ol class="experience__listgroup__item__right__listgroup specialclass">
-          {% for i in item.explist %}
-            <li class="experience__listgroup__item__right__listgroup__item">{{i}}</li>
-          {% endfor %}
-        </ol>
-      </div>
-    </li>
-  {% endfor %}
-</ol>
-{% endcall %}
+  {% call sectioncomponent('Experience', 'experience') %}
+  <ol class="experience__listgroup">
+    {% for item in home.experience %}
+      <li class="experience__listgroup__item">
+        <div class="experience__listgroup__item__left">
+          <h3 class="experience__listgroup__item__left__tenure">{{ item.tenure}}</h3>
+          <p  class="experience__listgroup__item__left__designation" >{{item.designation}}</p>
+          <p class="experience__listgroup__item__left__company">{{item.companyname}}</p>
+        </div>
+        <div class="experience__listgroup__item__right">
+          <ol class="experience__listgroup__item__right__listgroup specialclass">
+            {% for i in item.explist %}
+              <li class="experience__listgroup__item__right__listgroup__item">{{i}}</li>
+            {% endfor %}
+          </ol>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+  {% endcall %}
 
-{% call sectioncomponent('Education', 'education') %}
-<ul class="education__listgroup">
-  {% for item in home.education %}
-    <li class="education__listgroup__item">
-      <h3 class="education__listgroup__item__qualification">{{item.qualification}}</h3>
-      <p class="education__listgroup__item__university">{{item.university}}</p>
-    </li>
-  {% endfor %}
-</ul>
-{% endcall %}
+  {% call sectioncomponent('Education', 'education') %}
+  <ul class="education__listgroup">
+    {% for item in home.education %}
+      <li class="education__listgroup__item">
+        <h3 class="education__listgroup__item__qualification">{{item.qualification}}</h3>
+        <p class="education__listgroup__item__university">{{item.university}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endcall %}
 {% endblock %}
 {% block footer %}
-<footer class="footer">
-  <div class="footer__social">
-
-    <a href="https://github.com/Adititomar123" target="_blank" aria-label="check out my github account">
-      <svg role="img" aria-label="Github">
-        <use xlink:href="svg/sprite.svg#icon-github"></use>
-      </svg>
-    </a>
-    <a href="mailto:adititomar2k8@gmail.com" target="_blank" aria-label="check out my gmail account">
-      <svg role="img" aria-label="Gmail">
-        <use xlink:href="svg/sprite.svg#icon-gmail"></use>
-      </svg>
-    </a>
-  </div>
-</footer>
+  <footer class="footer">
+    <div class="footer__social">
+      <a href="https://www.linkedin.com/in/aditi-tomar-05bb0b93/" target="_blank" aria-label="check out my linkedin account" class="linkedin">
+        <svg role="img" aria-label="linkedin">
+          <use xlink:href="svg/sprite.svg#icon-linkedin"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/Adititomar123" target="_blank" aria-label="check out my github account" class="github">
+        <svg role="img" aria-label="Github">
+          <use xlink:href="svg/sprite.svg#icon-github"></use>
+        </svg>
+      </a>
+      <a href="mailto:adititomar2k8@gmail.com" target="_blank" aria-label="check out my gmail account" class="gmail">
+        <svg role="img" aria-label="Gmail">
+          <use xlink:href="svg/sprite.svg#icon-gmail"></use>
+        </svg>
+      </a>
+    </div>
+  </footer>
 
 {% endblock footer %}
 {% block page_scripts %}
 
-<script src="js/home.js"></script>
+  <script src="js/home.js"></script>
 {% endblock %}
