@@ -273,12 +273,15 @@ h2 {
       &:nth-child(1) {
         @media print {
           .experience__listgroup__item__right__listgroup__item {
+            &:nth-child(n) {
+              display: block !important;
+            }
             &:nth-child(9),
             &:nth-child(8),
             &:nth-child(7),
             &:nth-child(6),
             &:nth-child(5) {
-              display: none;
+              display: none !important;
             }
           }
         }
@@ -286,9 +289,21 @@ h2 {
       &:nth-child(2) {
         @media print {
           .experience__listgroup__item__right__listgroup__item {
+            &:nth-child(n) {
+              display: block !important;
+            }
             &:nth-child(4),
             &:nth-child(2) {
-              display: none;
+              display: none !important;
+            }
+          }
+        }
+      }
+      &:nth-child(3) {
+        @media print {
+          .experience__listgroup__item__right__listgroup__item {
+            &:nth-child(n) {
+              display: block !important;
             }
           }
         }
@@ -399,12 +414,20 @@ h2 {
             }
           }
         }
+        a.readmore {
+          @media print {
+            display: none;
+          }
+        }
         a.readmore:after {
           content: 'Read More';
           color: var(--color-primary);
           font-size: 14px;
           border-bottom: 2px solid;
           font-weight: bold;
+          @media print {
+            display: none;
+          }
         }
         .active a.readmore:after {
           content: 'Read Less';
@@ -420,6 +443,9 @@ h2 {
         margin-bottom: 0;
       }
     }
+  }
+  @media (prefers-color-scheme: dark) {
+    padding-top: 0.6rem;
   }
 }
 
@@ -491,20 +517,26 @@ h2 {
       svg {
         display: none;
       }
+      & a {
+        color: color('blue');
+      }
       & a:nth-child(3):after {
         content: 'adititomar2k8@gmail.com,';
         position: relative;
         padding-right: 10px;
+        color: #40488d;
       }
       & a:nth-child(2):after {
         content: 'https://github.com/Adititomar123,';
         position: relative;
         padding-right: 10px;
+        color: #40488d;
       }
       & a:nth-child(1):after {
         content: 'https://www.linkedin.com/feed/';
         position: relative;
         padding-right: 10px;
+        color: #40488d;
       }
     }
   }
@@ -516,7 +548,7 @@ h2 {
     height: 1.5rem;
   }
   a.linkedin {
-    fill: var(--color-linkedin);
+    color: var(--color-linkedin);
   }
   a.github {
     fill: var(--color-github);
@@ -525,6 +557,7 @@ h2 {
     fill: var(--color-mail);
   }
 }
+
 .darkmode .experience,
 .darkmode .skills {
   padding-top: 0.6rem;

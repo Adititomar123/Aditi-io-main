@@ -120,7 +120,7 @@ export default class HTMLCleanUp {
 
           // TODO: find better approach
           if (svgContent.length) {
-            const re = new RegExp(`svg\/sprite.svg`);
+            const re = new RegExp(`svg\/sprite.svg`, 'g');
 
             templateContent = templateContent.replace(re, '');
           }

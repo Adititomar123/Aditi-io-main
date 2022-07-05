@@ -21,57 +21,63 @@ downloadLink?.addEventListener('click', function () {
 const darkModeToggle = document.querySelector('#theme-toggle');
 darkModeToggle?.addEventListener('click', () => {
   document.body.classList.toggle('darkmode');
-  document.body.classList.toggle('lightmode');
-});
-if (!document.body.classList.contains('darkmode')) {
-  document.body.classList.add('lightmode');
-}
-if (
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-) {
-  document.body.classList.add('darkmode');
-  document.body.classList.remove('lightmode');
-}
-if (
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: light)').matches
-) {
-  document.body.classList.remove('darkmode');
-  document.body.classList.add('lightmode');
-}
-//readmore
-const x = window.matchMedia('(max-width: 700px)');
-if (x.matches) {
-  const classes = document.getElementsByClassName('specialclass');
-  const classarr = Object.values(classes);
-  for (const i in classarr) {
-    const a = document.createElement('a');
-    classarr[i].appendChild(a).classList.add('readmore');
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.body.classList.toggle('lightmode');
+    document.body.classList.remove('darkmode');
   }
-  const readbtns = document.querySelectorAll('.readmore');
-  for (let i = 0; i < readbtns.length; i++) {
-    const olelement = readbtns[i].parentNode as HTMLElement;
-    const list = olelement.getElementsByTagName('li');
-    const liarray = Object.values(list);
-    liarray.shift();
-    for (let j = 0; j < liarray.length; j++) {
-      liarray[j].style.display = 'none';
-    }
-    readbtns[i].addEventListener('click', () => {
-      olelement.classList.toggle('active');
-      if (olelement.classList.contains('active')) {
-        for (let j = 0; j < liarray.length; j++) {
-          liarray[j].style.display = 'block';
+});
+
+//readmore
+
+const media = window.matchMedia('(max-width: 700px)');
+
+function render(e: any) {
+  if (e.matches) {
+    const classes = document.querySelectorAll('.specialclass');
+    classes.forEach(specialclass => {
+      const a = document.createElement('a');
+      specialclass.appendChild(a).classList.add('readmore');
+      const allist = specialclass.getElementsByTagName('li');
+      for (let j = 1; j < allist.length; j++) {
+        allist[j].style.display = 'none';
+      }
+    });
+
+    const readbtns = document.querySelectorAll('.readmore');
+    readbtns.forEach(readmore => {
+      const olelement = readmore.parentNode as HTMLElement;
+      const allist = olelement.getElementsByTagName('li');
+      readmore.addEventListener('click', () => {
+        olelement.classList.toggle('active');
+        if (olelement.classList.contains('active')) {
+          for (let j = 1; j < allist.length; j++) {
+            allist[j].style.display = 'block';
+          }
+        } else {
+          for (let j = 1; j < allist.length; j++) {
+            allist[j].style.display = 'none';
+          }
         }
-      } else {
-        for (let j = 0; j < liarray.length; j++) {
-          liarray[j].style.display = 'none';
-        }
+      });
+    });
+  } else {
+    const readelem = document.querySelectorAll('.readmore');
+    readelem.forEach(readmore => {
+      readmore.remove();
+    });
+    const olelems = document.querySelectorAll('.specialclass');
+    olelems.forEach(specialclass => {
+      const allist = specialclass.getElementsByTagName('li');
+      for (let j = 0; j < allist.length; j++) {
+        allist[j].style.display = 'block';
       }
     });
   }
 }
+render(media);
+
+media.addEventListener('change', render);
+
 //Lazy loading
 // window.addEventListener('DOMContentLoaded', event => {
 //   class CustomLink {
