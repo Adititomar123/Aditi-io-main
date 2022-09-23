@@ -22,11 +22,12 @@ downloadLink?.addEventListener('click', function () {
 const darkModeToggle = document.querySelector('#theme-toggle');
 const setTheme = document.body;
 
+toggleThemeButtonListener();
+
 if (
   window.matchMedia &&
   window.matchMedia('(prefers-color-scheme: dark)').matches
 ) {
-  toggleThemeButton();
   darkModeListener();
 }
 if (
@@ -34,10 +35,9 @@ if (
   window.matchMedia('(prefers-color-scheme: light)').matches
 ) {
   lightModeListener();
-  toggleThemeButton();
 }
 
-function toggleThemeButton() {
+function toggleThemeButtonListener() {
   darkModeToggle?.addEventListener('click', () => {
     const pressed = darkModeToggle!.getAttribute('aria-pressed') === 'true';
 
