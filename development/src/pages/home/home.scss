@@ -20,10 +20,12 @@ ol {
   padding: rem(30) rem(40);
   z-index: 2;
   position: relative;
+
   @media (min-width: $laptop) {
     margin: rem(30) auto;
     border-radius: rem(20);
   }
+
   @media print {
     margin: 0;
   }
@@ -40,9 +42,11 @@ ol {
   right: 26px;
   top: 26px;
   cursor: pointer;
+
   @media print {
     display: none;
   }
+
   svg {
     width: 20px;
     height: 20px;
@@ -56,20 +60,24 @@ ol {
   grid-template-columns: minmax(250px, 1fr) minmax(330px, 100%);
   gap: rem(40);
   align-items: center;
+
   @media (min-width: $tablet) {
     display: grid;
     grid-template-columns: minmax(250px, 1fr) minmax(400px, 100%);
     margin: 3% 3% 5%;
     gap: 20px;
   }
+
   @media (min-width: $laptop) {
     grid-template-columns: minmax(300px, 1fr) minmax(400px, 100%);
   }
+
   @media print {
     margin: 3% 0;
     grid-template-columns: 0 100%;
     gap: 0;
   }
+
   &__picture {
     box-shadow: var(--shadow-picture);
     border-radius: 1000px;
@@ -77,40 +85,50 @@ ol {
     width: 250px;
     border: rem(18) solid var(--color-secondary);
     overflow: hidden;
+
     @media (min-width: $tablet) {
       width: 250px;
       height: 250px;
     }
+
     @media print {
       display: none;
     }
+
     img {
       width: 100%;
       height: auto;
     }
   }
+
   &__text {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     &__title {
       font-size: clamp(2rem, -0.875rem + 8vw, 3.2rem);
       font-weight: font-weight('bold');
+
       @media print {
         font-size: rem(16);
       }
     }
+
     &__area {
       font-size: clamp(1rem, -0.675rem + 5vw, 1.2rem);
       color: var(--color-primary-2);
+
       @media print {
         font-size: rem(12);
       }
     }
+
     &__description {
       font-size: clamp(1rem, -0.675rem + 4vw, 1.1rem);
       padding: rem(18) 0 rem(25);
       line-height: clamp(1rem, 1.8rem, 2.1rem);
+
       @media print {
         font-size: rem(11);
         line-height: rem(15);
@@ -118,6 +136,7 @@ ol {
       }
     }
   }
+
   &__link {
     padding: rem(12) rem(20);
     border-radius: rem(50);
@@ -129,9 +148,11 @@ ol {
     color: var(--color-primary-2);
     width: max-content;
     transition: padding 0.5s ease;
+
     &:hover {
       background-color: var(--color-shadow);
     }
+
     @media print {
       display: none;
     }
@@ -144,6 +165,7 @@ ol {
   padding-right: rem(48);
   transition: all 0.2 ease;
 }
+
 .loader:after {
   content: '';
   position: absolute;
@@ -159,11 +181,13 @@ ol {
   top: rem(5);
   transition-delay: 0.6s;
 }
+
 @keyframes animate {
   100% {
     transform: rotate(360deg);
   }
 }
+
 .finished:after {
   content: '';
   position: absolute;
@@ -176,6 +200,7 @@ ol {
   right: rem(7);
   top: rem(5);
 }
+
 .finished:before {
   content: '';
   background-image: url(../../images/green-check.png);
@@ -190,6 +215,7 @@ ol {
   z-index: 1;
   top: rem(13);
 }
+
 @keyframes special {
   10% {
     transform: scale(0.8) translateY(0px);
@@ -209,6 +235,7 @@ section {
 h2 {
   font-size: clamp(1.6rem, -0.875rem + 5vw, 1.8rem);
   padding-bottom: rem(20);
+
   @media print {
     font-size: rem(14);
     padding-bottom: rem(10);
@@ -228,6 +255,7 @@ h2 {
       font-size: rem(13);
       gap: rem(30);
       margin-bottom: rem(20);
+
       &:nth-child(1) {
         @media print {
           .experience__listgroup__item__right__listgroup__item {
@@ -241,6 +269,7 @@ h2 {
           }
         }
       }
+
       &:nth-child(2) {
         @media print {
           .experience__listgroup__item__right__listgroup__item {
@@ -251,6 +280,7 @@ h2 {
           }
         }
       }
+
       @media print {
         padding: 0 0 rem(10) 0;
         font-size: rem(10);
@@ -261,14 +291,17 @@ h2 {
         border-bottom: 2px solid color('dove');
         border-radius: 0;
       }
+
       &__left {
         line-height: rem(26);
         width: 220px;
+
         @media print {
           line-height: rem(15);
           display: flex;
           width: 100%;
         }
+
         &__tenure {
           position: relative;
           background: var(--color-tealbg);
@@ -277,6 +310,7 @@ h2 {
           margin-left: -35px;
           margin-bottom: rem(8);
           border: 1px solid var(--color-border);
+
           @media print {
             font-size: rem(10);
             padding: 0;
@@ -288,6 +322,7 @@ h2 {
             border-right: 2px solid color('grey');
             margin-right: rem(10);
           }
+
           &:before {
             content: '';
             position: absolute;
@@ -296,11 +331,13 @@ h2 {
             border-top-color: var(--color-primary);
             bottom: -10px;
             left: -1px;
+
             @media print {
               content: none;
             }
           }
         }
+
         &__designation {
           @media print {
             padding-right: rem(10);
@@ -309,22 +346,27 @@ h2 {
           }
         }
       }
+
       &__right {
         width: 100%;
         border-left: rem(2) dotted var(--color-primary);
         padding-left: rem(20);
+
         @media print {
           padding-left: rem(15);
           border-left: none;
         }
+
         &__listgroup {
           &__item {
             margin-bottom: rem(8);
             position: relative;
+
             @media print {
               margin-bottom: rem(3);
               line-height: 14px;
             }
+
             &::before {
               content: '';
               position: absolute;
@@ -335,6 +377,7 @@ h2 {
               border-radius: 10px;
               left: -32px;
               top: rem(4);
+
               @media print {
                 border: rem(2) solid color('eyebrow');
                 width: 8px;
@@ -343,6 +386,7 @@ h2 {
                 top: rem(2);
               }
             }
+
             &::after {
               content: '';
               position: absolute;
@@ -357,13 +401,16 @@ h2 {
             }
           }
         }
+
         @media (min-width: $tablet) {
           width: calc(100% - 250px);
         }
       }
+
       @media (min-width: $laptop) {
         flex-direction: row;
       }
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -376,6 +423,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: rem(30);
+
     @media print {
       width: 100%;
       flex-wrap: no-wrap;
@@ -383,9 +431,11 @@ h2 {
       flex-direction: row;
       gap: rem(20);
     }
+
     &__item {
       position: relative;
       padding-left: rem(20);
+
       @media print {
         width: 50%;
         padding-left: rem(15);
@@ -393,11 +443,13 @@ h2 {
       &__qualification {
         margin-bottom: rem(5);
         font-size: rem(13);
+
         @media print {
           margin-bottom: rem(2);
           font-size: rem(10);
         }
       }
+
       &:before {
         content: '';
         position: absolute;
@@ -406,6 +458,7 @@ h2 {
         background-color: var(--color-primary);
         left: 0;
         top: rem(5);
+
         @media print {
           -webkit-print-color-adjust: exact;
           background-color: color('eyebrow');
@@ -415,6 +468,7 @@ h2 {
         }
       }
     }
+
     @media (min-width: $tablet) {
       flex-direction: row;
     }
@@ -427,28 +481,33 @@ h2 {
   border-top: rem(2) solid color('grey');
   display: flex;
   justify-content: flex-end;
+
   @media print {
     margin-top: rem(20);
     justify-content: flex-start;
   }
+
   &__social {
     display: flex;
     gap: 11px;
-    flex-direction: row-reverse;
+
     @media print {
       svg {
         display: none;
       }
+
       & a:nth-child(3):after {
         content: 'adititomar2k8@gmail.com,';
         position: relative;
         padding-right: 10px;
       }
+
       & a:nth-child(2):after {
         content: 'https://github.com/Adititomar123,';
         position: relative;
         padding-right: 10px;
       }
+
       & a:nth-child(1):after {
         content: 'https://www.linkedin.com/feed/';
         position: relative;
@@ -456,9 +515,11 @@ h2 {
       }
     }
   }
+
   &__social a {
     display: block;
   }
+
   &__social svg {
     width: 1.5rem;
     height: 1.5rem;
