@@ -55,7 +55,7 @@ ol {
   flex-direction: column;
   margin: 0 0 8% 0;
   grid-template-columns: minmax(250px, 1fr) minmax(330px, 100%);
-  gap: rem(15);
+
   align-items: flex-start;
   @media (min-width: $tablet) {
     display: grid;
@@ -80,11 +80,15 @@ ol {
     width: 100px;
     border: 0.4rem solid var(--color-secondary);
     overflow: hidden;
+    margin-bottom: rem(15);
+    margin-right: rem(15);
+
     @media (min-width: $tablet) {
       border-radius: 1000px;
       height: 200px;
       width: 200px;
       border: rem(12) solid var(--color-secondary);
+      margin-bottom: 0;
     }
     @media (min-width: $laptop) {
       border-radius: 1000px;
@@ -487,7 +491,6 @@ h2 {
   }
   &__social {
     display: flex;
-    gap: 11px;
     flex-direction: row-reverse;
     @media print {
       svg {
@@ -512,6 +515,7 @@ h2 {
   }
   &__social a {
     display: block;
+    margin-left: rem(12);
   }
   &__social svg {
     width: 1.5rem;
