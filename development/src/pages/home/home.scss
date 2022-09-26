@@ -352,7 +352,10 @@ h2 {
       }
       &__right {
         width: 100%;
-        border-left: rem(2) dotted var(--color-primary);
+        border-left: rem(1);
+        border-left-color: var(--color-primary);
+        border-left-style: dashed;
+        padding-left: rem(20);
         padding-left: rem(20);
         @media print {
           padding-left: rem(15);
